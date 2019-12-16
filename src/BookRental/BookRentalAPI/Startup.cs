@@ -26,12 +26,39 @@ namespace BookRentalAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Book API";
+                    document.Info.Description = "A simple ASP.NET Core BOOK API";
+                    document.Info.TermsOfService = "None";
+                    document.Info.Contact = new NSwag.OpenApiContact
+                    {
+                        Name = "Andrei Ignat",
+                        Email = string.Empty,
+                        Url = "http://msprogrammer.serviciipeweb.ro/"
+                    };
+                    document.Info.License = new NSwag.OpenApiLicense
+                    {
+                        Name = "MIT",
+                        Url = "https://opensource.org/licenses/MIT"
+                    };
+                };
+            });
+            services.AddCors(o => o.AddPolicy("AllPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("AllPolicy");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
