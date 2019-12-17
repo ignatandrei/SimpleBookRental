@@ -25,7 +25,7 @@ async componentDidMount() {
   const infoUrl="https://bookrentalapi20191216080922.azurewebsites.net/Info/GetLatestCommit";
   const responsInfo = await fetch(infoUrl);
   const dataInfo = await responsInfo.json();
-  console.log(this.dataInfo);
+  console.log(dataInfo);
   this.setState({ books: data,info:dataInfo, loading: false})
   
   
