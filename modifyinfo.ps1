@@ -1,6 +1,6 @@
 $file = ".\src\BookRental\BookRentalAPI\Controllers\InfoController.cs"
 $date = Get-Date -Format "yyyyMMdd:HHmmss"
-$commitText= & "git.exe" "reflog  -1  --pretty=oneline"
+$commitText= & "git.exe" "log --format='%s' -1"
 $author=Get-Variable BUILD_SOURCEVERSIONAUTHOR -valueOnly 
 Get-ChildItem Env:
 #$commitText = (Get-Item Env:\BUILD_SOURCEVERSIONMESSAGE)
