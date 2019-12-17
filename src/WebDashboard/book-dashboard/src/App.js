@@ -46,7 +46,7 @@ async componentDidMount() {
             </ol>
       {(this.state.info != null) &&
         <small>
-          Latest {this.state.info.lastAuthor} 
+          Latest made by {this.state.info.lastAuthor} at {this.state.info.dateCommit} with message : {this.state.info.latestCommit}
         </small>
       }
       
