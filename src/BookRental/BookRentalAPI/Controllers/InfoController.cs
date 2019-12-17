@@ -10,6 +10,7 @@ namespace BookRentalAPI.Controllers
     {
         public string LatestCommit { get; set; }
         public DateTime DateCommit { get; set; }
+        public string LastAuthor { get; set; }
     }
     [ApiController]
     [Route("[controller]/[Action]")]
@@ -22,6 +23,7 @@ namespace BookRentalAPI.Controllers
                 {
                     LatestCommit = "{LatestCommit}",
                     DateCommit = DateTime.ParseExact("{DateCommit}","yyyyMMdd:HHmmss", null)
+                    LastAuthor = "{LastAuthor}"
                 }
                 ;
         }
