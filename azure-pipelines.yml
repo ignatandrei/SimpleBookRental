@@ -37,6 +37,7 @@ steps:
   displayName: modify info
 
 - script: |
+    cmd /K set
     buildAll.bat
   displayName: build react
 
