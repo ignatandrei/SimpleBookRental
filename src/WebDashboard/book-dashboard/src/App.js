@@ -8,7 +8,8 @@ class App extends Component {
     super();
     this.state = {
       loading: false,
-      books: []
+      books: [],
+      info: {}
     }
   }
     
@@ -19,8 +20,13 @@ async componentDidMount() {
   const response = await fetch(url);
   const data = await response.json();
   console.log(this.state.books);
-  this.setState({ books: data, loading: false})
+  this.setState({ books: data,info:{}, loading: false})
   console.log(this.state.books);
+  const infoUrl="https://bookrentalapi20191216080922.azurewebsites.net/Info/GetLatestCommit";
+  const responsInfo = await fetch(infoUrl);
+  const dataInfo = await responsInfo.json();
+  console.log(this.dataInfo);
+  this.setState({ books: data,info:dataInfo, loading: false})
   
   
 }
