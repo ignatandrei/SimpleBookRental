@@ -1,15 +1,16 @@
 import React from 'react';
 import bookCard from './bookCard';
 
-const bookCatalog = ({books}) => {
+const bookCatalog = () => {
   return (
     <div>
       {
-        books.map((user, i) => {
+        this.state.books.map((home, i) => {
           return <bookCard
-          id={books[i].id}
-          author={books[i].author}
-          description={books[i].description}
+          key={i}
+          id={home[i].id}
+          author={home[i].author}
+          description={home[i].description}
           />
         })
       }
