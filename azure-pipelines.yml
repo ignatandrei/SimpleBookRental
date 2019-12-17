@@ -33,12 +33,12 @@ steps:
 #   inputs:
 #     platform: '$(buildPlatform)'
 #     configuration: '$(buildConfiguration)'
- - bash: |
+- bash: |
     echo "##vso[task.setvariable variable=commitMessage;isOutput=true]$(Build.SourceVersionMessage)"
     echo "Message is '$(Build.SourceVersionMessage)''"
   displayName: Store commit message in variable
 
-  - powershell: .\modifyinfo.ps1
+- powershell: .\modifyinfo.ps1
   displayName: modify info
 
 - script: |
