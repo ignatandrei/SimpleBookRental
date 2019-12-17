@@ -32,9 +32,12 @@ steps:
 #   inputs:
 #     platform: '$(buildPlatform)'
 #     configuration: '$(buildConfiguration)'
-
 - script: |
     buildAll.bat
+  displayName: build react
+
+
+- script: |
     dotnet build --configuration $(buildConfiguration) -r linux-x64 src/BookRental/BookRental.sln /m:1
     dotnet publish src/BookRental/BookRentalAPI/BookRentalAPI.csproj --configuration $(buildConfiguration) --no-build -r linux-x64 -p:PublishSingleFile=false  -o $(Build.ArtifactStagingDirectory)/BookRentalAPI
   displayName: publish again  
