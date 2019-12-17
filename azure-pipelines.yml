@@ -55,7 +55,7 @@ steps:
   inputs:
       azureSubscription: 'sbr'
       action: 'Stop Azure App Service'
-      WebAppName: 'infovalutar'
+      WebAppName: 'BookRentalAPI20191216080922'
       ResourceGroupName: 'BookRentalRG'
   displayName: stop azure
 
