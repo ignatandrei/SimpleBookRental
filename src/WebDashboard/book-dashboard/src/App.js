@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import bookCatalog from './components/bookCatalog';
+import BookCatalog from './components/bookCatalog';
+import BookCard from './components/bookCard';
 import './App.css';
 
 class App extends Component {
@@ -7,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       loading: false,
-      books: null
+      books: []
     }
   }
     
@@ -17,7 +18,8 @@ async componentDidMount() {
   const url = "https://bookrentalapi20191216080922.azurewebsites.net/Book/GetBooks";
   const response = await fetch(url);
   const data = await response.json();
-  this.setState({ books: data.GetBooks, loading: false})
+  console.log(this.state.books);
+  this.setState({ books: data, loading: false})
   console.log(this.state.books);
   
   
@@ -26,16 +28,17 @@ async componentDidMount() {
 
   render() {
     return (
-      <div>
+     
         
         <div className='tc'>
             <h1>Simple Book Rental</h1>
             
-            <h3>{this.state.books}</h3>
+            <h3>{this.state.books.length}</h3>
+            <ol>
            
-            </div>
-      
-        
+            {this.state.books.map(home => <li>{home.title}</li>)}
+            </ol>
+            
       
       </div>
       
