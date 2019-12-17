@@ -36,8 +36,8 @@ steps:
 - bash: |
     git log --format='%s' -1
     git log --pretty=oneline | head -1
-    echo "##vso[task.setvariable variable=commitMessage;isOutput=true]$(Build.SourceVersionMessage)"
-    echo "Message is '$(Build.SourceVersionMessage)''"
+    gitMessage=$(git log --format='%s' -1)
+    echo "##vso[task.setvariable variable=commitMessage;isOutput=true]$gitMessage"    
   displayName: Store commit message in variable
 
 - powershell: .\modifyinfo.ps1
