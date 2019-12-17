@@ -32,6 +32,10 @@ steps:
 #   inputs:
 #     platform: '$(buildPlatform)'
 #     configuration: '$(buildConfiguration)'
+
+- powershell: .\modifyinfo.ps1
+  displayName: modify info
+
 - script: |
     buildAll.bat
   displayName: build react
