@@ -12,5 +12,9 @@
     <ProjectReference Include="..\BookRentalObjects\BookRentalObjects.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 
 </Project>
