@@ -22,7 +22,7 @@ namespace BookRentalAPI.Controllers
                 new CommitInfo()
                 {
                     LatestCommit = "{LatestCommit}",
-                    DateCommit = DateTime.ParseExact("{DateCommit}","yyyyMMdd:HHmmss", null)
+                    DateCommit = DateTime.ParseExact("{DateCommit}","yyyyMMdd:HHmmss", null),
                     LastAuthor = "{LastAuthor}"
                 }
                 ;
