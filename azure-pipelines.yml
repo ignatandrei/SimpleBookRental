@@ -32,3 +32,46 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- script: |
+    dotnet build --configuration $(buildConfiguration) -r linux-x64 InfoValutar/InfoValutar.sln /m:1
+    dotnet publish src/BookRental/BookRentalAPI/BookRentalAPI.csproj --configuration $(buildConfiguration) --no-build -r linux-x64 -p:PublishSingleFile=false  -o $(Build.ArtifactStagingDirectory)/BookRentalAPI
+  displayName: publish again  
+
+ - task: ArchiveFiles@2
+   inputs:
+      rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/BookRentalAPI'
+      includeRootFolder: false
+      archiveType: 'zip' 
+      archiveFile: '$(Build.ArtifactStagingDirectory)/BookRentalAPI.zip' 
+      replaceExistingArchive: true 
+  displayName: 'arhive files'
+  
+  - script: |
+       dir $(System.ArtifactsDirectory)\*.zip /s /b
+    displayName: finding zip after Publish      
+   
+  - task: AzureAppServiceManage@0
+    inputs:
+        azureSubscription: 'sbr'
+        action: 'Stop Azure App Service'
+        WebAppName: 'infovalutar'
+        ResourceGroupName: 'BookRentalRG'
+    displayName: stop azure
+
+  - task: AzureRmWebAppDeployment@4
+    inputs:
+      azureSubscription: 'sbr'
+      WebAppName: 'BookRentalAPI20191216080922'
+      Package: $(System.ArtifactsDirectory)/*BookRentalAPI*.zip
+      ResourceGroupName: 'BookRentalRG'
+    displayName: deploy to azure
+    
+  - task: AzureAppServiceManage@0
+    inputs:
+        azureSubscription: 'sbr'
+        action: 'Start Azure App Service'
+        WebAppName: 'BookRentalAPI20191216080922'
+        ResourceGroupName: 'BookRentalRG'
+    condition: always() # always restart azure
+    displayName: start azure    
