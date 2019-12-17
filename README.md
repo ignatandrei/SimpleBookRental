@@ -1,6 +1,9 @@
 # SimpleBookRental
 Simple book rental
 
+# Site
+https://bookrentalapi20191216080922.azurewebsites.net/
+
 # Swagger
 https://bookrentalapi20191216080922.azurewebsites.net/swagger/index.html
 
