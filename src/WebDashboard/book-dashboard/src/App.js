@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       loading: false,
       books: [],
-      info: {}
+      info: null
     }
   }
     
@@ -44,7 +44,11 @@ async componentDidMount() {
            
             {this.state.books.map(home => <li>{home.title}</li>)}
             </ol>
-            
+      {(this.state.info != null) &&
+        <small>
+          Latest {this.state.info.lastAuthor} 
+        </small>
+      }
       
       </div>
       
