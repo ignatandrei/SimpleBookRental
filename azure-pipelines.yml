@@ -34,7 +34,7 @@ steps:
 #     configuration: '$(buildConfiguration)'
 
 - script: |
-    dotnet build --configuration $(buildConfiguration) -r linux-x64 InfoValutar/InfoValutar.sln /m:1
+    dotnet build --configuration $(buildConfiguration) -r linux-x64 src/BookRental/BookRental.sln /m:1
     dotnet publish src/BookRental/BookRentalAPI/BookRentalAPI.csproj --configuration $(buildConfiguration) --no-build -r linux-x64 -p:PublishSingleFile=false  -o $(Build.ArtifactStagingDirectory)/BookRentalAPI
   displayName: publish again  
 
