@@ -37,15 +37,18 @@ componentDidMount() {
     
 }
 
-
   render() {
 
-    const { books } = this.state;
-    const filterBooks = books.filter(book => {
-      return book.author;
+    const { books }  = this.state;
+    console.log({books}, "const");
+    
+    // const filterBooks = books.filter(book => {
+    //   return book.title;
       
-    })
-    console.log(filterBooks, "lol");
+    //   console.log(book.title, "filter");
+    // })
+    
+    // console.log(filterBooks, "lol");
     if (!books.length) {
       return <h1 className="tc">LOADING</h1>
     } else {
@@ -61,21 +64,23 @@ componentDidMount() {
             </nav>
           </header>
             
+            <h3>{books[1].id}</h3>
             <h3>{books[1].title}</h3>
+            <h3>{books[1].description}</h3>
             <h3>{books[1].authors[0].name}</h3>
             {console.log(this.state.books, "working api")}
-            <ol>
-              <h4>{books[1].author}</h4>
+            {console.log(bookCatalog.title, "bkctlg")
+            }
             
-            </ol>
-        <bookCatalog books={filterBooks} />
+            
+          <bookCatalog books={books[1].title} />
         
-        <footer className="bg-near-black white-80 pv5 pv4-l ph4">
-          {(this.state.info != null) &&
-            <h2 className="f6 ml3 pr2">
-             Created by Andrei Ignat and Bogdan Bobe || Latest commit made by {this.state.info.lastAuthor} at {this.state.info.dateCommit} with the message: {this.state.info.latestCommit}
-            </h2>
-          }
+          <footer className="bg-near-black white-80 pv5 pv4-l ph4">
+            {(this.state.info != null) &&
+              <h2 className="f6 ml3 pr2">
+              Created by Andrei Ignat and Bogdan Bobe || Latest commit made by {this.state.info.lastAuthor} at {this.state.info.dateCommit} with the message: {this.state.info.latestCommit}
+              </h2>
+            }
         </footer>
       
       
