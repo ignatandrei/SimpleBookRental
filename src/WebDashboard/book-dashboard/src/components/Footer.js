@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import moment from 'moment';
 
 const Footer = () => {
 
@@ -17,11 +18,12 @@ const Footer = () => {
 
   return (
     <div>
-    <footer className="tc bg-near-black white-80 pv5 pv4-l ph4">
+    <footer className="tc white-80 pv5 pv4-l ph4">
             
               <h2 className="f6 ml3 pr2">
               Created by Andrei Ignat and Bogdan Bobe || 
               Latest commit made by {commit.lastAuthor} at {commit.dateCommit} with the message: {commit.latestCommit}
+              <br />MomentsJS time is now {moment().format('LLLL', commit.dateCommit)} at {moment.locale()}
               </h2>
             
         </footer>

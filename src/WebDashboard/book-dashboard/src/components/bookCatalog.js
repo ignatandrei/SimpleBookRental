@@ -18,7 +18,7 @@ const BookCatalog = () => {
     }, []);
 
   return (
-    <div>
+    <div className="tc">
       {
         books.map((book, i) => {
           return <BookCard
