@@ -3,12 +3,12 @@ import React from 'react';
 
 const BookCard = ( {id, author, title, description} ) => {
   return (
-    <div className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5">
-      {<img style={{width:300, height:300}} alt='book' src={`https://pixabay.com/get/54e3dd4a4850a514f1dc8460825668204022dfe05459734c742c78dc/book-2389229_640.png`} />}
-      <h2>ID: {id}</h2>
-      <h2>Author:<br />{author}</h2>
-      <h3>Title:<br />{title}</h3>
-      <p>Description:<br /> {description}</p>
+    <div className="tc dib grow br2 ba dark-gray b--black-10 w-20 mv4 mh2 h-25 mw-30">
+      {<img className="br2 br--top h-25 w-100" alt='book' src={`https://images-na.ssl-images-amazon.com/images/I/71qWDVkNMRL.jpg`} />}
+      <p>ID: {id}</p>
+      <h3>Author:<br />{author}</h3>
+      <h5 className="mv0">Title:<br />{title}</h5>
+      <p className="">Description:<br /> {description}</p>
     </div>
   );
 }
