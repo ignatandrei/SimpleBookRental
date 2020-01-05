@@ -8,11 +8,16 @@ using Microsoft.Extensions.Logging;
 
 namespace BookRentalAPI.Controllers
 {
+    public class Library
+    {
+        public Book[] Books { get; set; }
+        public Author[] Authors { get; set; }
+    }
     [ApiController]
     [Route("[controller]/[Action]")]
     public class BookController : ControllerBase
     {
-       
+
         private readonly ILogger<BookController> _logger;
 
         public BookController(ILogger<BookController> logger)
@@ -21,16 +26,24 @@ namespace BookRentalAPI.Controllers
         }
 
         [HttpGet]
-        public Book[] GetBooks()
+        public Library GetBooks()
         {
             var l = new LoadBooks();
-            return l.Books();
+            return new Library()
+            {
+                Books = l.Books()
+            }
+            ;
         }
         [HttpGet]
-        public Author[] GetAuthors()
+        public Library GetAuthors()
         {
             var l = new LoadBooks();
-            return l.Authors();
+            return new Library()
+            {
+                Authors = l.Authors()
+            }
+            ;
         }
     }
 }
