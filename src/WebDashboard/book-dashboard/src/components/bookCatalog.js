@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import BookCard from './BookCard';
 
 
-
-// console.log(this.props.title, "catalog");
 const BookCatalog = () => {
 
   const [ books, setBooks ] = useState([]);
@@ -29,15 +27,12 @@ const BookCatalog = () => {
           author={books[i].authors[0].name}
           title={books[i].title}
           description={books[i].description}
-          
           />
-          
         })
       }
       
     </div>
   );
-  
 }
 
 export default BookCatalog;
