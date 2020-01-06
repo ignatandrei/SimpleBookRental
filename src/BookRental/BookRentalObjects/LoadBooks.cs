@@ -27,7 +27,7 @@ namespace BookRentalObjects
             using var ms = new MemoryStream();
             using var image = new Image<Rgba32>(1664, 2560);
             
-            var font = SystemFonts.CreateFont("Times New Roman", 50);
+            var font = SystemFonts.CreateFont(SystemFonts.Families.First().Name, 50);
             var opt = new TextGraphicsOptions { Antialias = true, WrapTextWidth = 780 };
             
             var brush = Brushes.Solid(Color.Red);
