@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -7,6 +10,34 @@ namespace BookRentalObjects
 {
     public class LoadBooks
     {
+        public byte[] GetImage(int bookId)
+        {
+            var book = Books().FirstOrDefault(it => it.ID == bookId);
+            var name = book == null ? "Not found book" : $"this is image of : {book.Title}";
+            var colorList = Enum.GetValues(typeof(KnownColor))
+                            .Cast<KnownColor>()
+                            .ToList();
+            var id =Math.Abs( name.GetHashCode());
+            if(id > colorList.Count)
+            {
+                id = id % colorList.Count;
+            }
+            var colorPen = Color.FromKnownColor(colorList[id]);
+            using var image = new Bitmap(1664, 2560);
+
+            using var graph = Graphics.FromImage(image);
+            
+            graph.Clear(Color.Azure);
+
+            using var br = new Pen(colorPen);
+            var font = new Font(new FontFamily("Arial"), 40, FontStyle.Bold);
+            graph.DrawString(name,font,new SolidBrush(colorPen), new PointF(image.Width/3, image.Height/3));
+            using var ms = new MemoryStream();
+            image.Save(ms, ImageFormat.Png);
+            ms.Position = 0;
+            return ms.ToArray();
+
+        }
         public  Author[] Authors()
         {
             var authors = new List<Author>();

@@ -35,6 +35,14 @@ namespace BookRentalAPI.Controllers
             }
             ;
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetImage(int id)
+        {
+            var l = new LoadBooks();
+            return File(l.GetImage(id), "image/png");
+
+
+        }
         [HttpGet]
         public Library GetAuthors()
         {
