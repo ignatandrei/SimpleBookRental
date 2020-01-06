@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.HttpSys;
+using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +28,13 @@ namespace BookRentalAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddAuthentication(IISDefaults.AuthenticationScheme);
+            //services
+            //    .AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+            //    .AddNegotiate();
+
+            services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
             services.AddControllers();
             services.AddSwaggerDocument(config =>
             {
@@ -63,7 +73,7 @@ namespace BookRentalAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseDefaultFiles();
             app.UseStaticFiles();

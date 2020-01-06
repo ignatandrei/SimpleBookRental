@@ -1,7 +1,13 @@
-﻿using System;
+﻿using SixLabors.Fonts;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Processing.Processors.Text;
+using SixLabors.Primitives;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
+//using System.Drawing;
+//using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,28 +20,48 @@ namespace BookRentalObjects
         {
             var book = Books().FirstOrDefault(it => it.ID == bookId);
             var name = book == null ? "Not found book" : $"this is image of : {book.Title}";
-            var colorList = Enum.GetValues(typeof(KnownColor))
-                            .Cast<KnownColor>()
-                            .ToList();
-            var id =Math.Abs( name.GetHashCode());
-            if(id > colorList.Count)
-            {
-                id = id % colorList.Count;
-            }
-            var colorPen = Color.FromKnownColor(colorList[id]);
-            using var image = new Bitmap(1664, 2560);
+            int hash = name.GetHashCode();
+            int r = (hash & 0xFF0000) >> 16;
+            int g = (hash & 0x00FF00) >> 8;
+            int b = hash & 0x0000FF;
 
-            using var graph = Graphics.FromImage(image);
-            
-            graph.Clear(Color.Azure);
-
-            using var br = new Pen(colorPen);
-            var font = new Font(new FontFamily("Arial"), 40, FontStyle.Bold);
-            graph.DrawString(name,font,new SolidBrush(colorPen), new PointF(image.Width/3, image.Height/3));
             using var ms = new MemoryStream();
-            image.Save(ms, ImageFormat.Png);
+            using var image = new Image<Rgba32>(1664, 2560);
+            
+            var font = SystemFonts.CreateFont("Arial", 50);
+            var opt = new TextGraphicsOptions { Antialias = true, WrapTextWidth = 780 };
+            
+            var brush = Brushes.Solid(Color.Red);
+            var start = new PointF(image.Width / 3, image.Height / 3);
+            var proc= new DrawTextProcessor(opt, name, font, brush, null,start );
+            image.Mutate(x => x.ApplyProcessor(proc));
+            image.SaveAsPng(ms);
+            
             ms.Position = 0;
             return ms.ToArray();
+            //The type initializer for 'Gdip' threw an exception
+            //var colorList = Enum.GetValues(typeof(KnownColor))
+            //                .Cast<KnownColor>()
+            //                .ToList();
+            //var id =Math.Abs( name.GetHashCode());
+            //if(id > colorList.Count)
+            //{
+            //    id = id % colorList.Count;
+            //}
+            //var colorPen = Color.FromKnownColor(colorList[id]);
+            //using var image = new Bitmap(1664, 2560);
+
+            //using var graph = Graphics.FromImage(image);
+
+            //graph.Clear(Color.Azure);
+
+            //using var br = new Pen(colorPen);
+            //var font = new Font(new FontFamily("Arial"), 40, FontStyle.Bold);
+            //graph.DrawString(name,font,new SolidBrush(colorPen), new PointF(image.Width/3, image.Height/3));
+            //using var ms = new MemoryStream();
+            //image.Save(ms, ImageFormat.Png);
+            //ms.Position = 0;
+            //return ms.ToArray();
 
         }
         public  Author[] Authors()
