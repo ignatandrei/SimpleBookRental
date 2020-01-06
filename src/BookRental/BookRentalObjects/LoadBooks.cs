@@ -26,14 +26,17 @@ namespace BookRentalObjects
 
             using var ms = new MemoryStream();
             using var image = new Image<Rgba32>(1664, 2560);
-            
-            var font = SystemFonts.CreateFont(SystemFonts.Families.First().Name, 50);
+            var allFonts= SystemFonts.Collection.Families.Union(SystemFonts.Families);
+
+            var font = SystemFonts.CreateFont(allFonts.First().Name, 50);
             var opt = new TextGraphicsOptions { Antialias = true, WrapTextWidth = 780 };
             
             var brush = Brushes.Solid(Color.Red);
             var start = new PointF(image.Width / 3, image.Height / 3);
             var proc= new DrawTextProcessor(opt, name, font, brush, null,start );
-            image.Mutate(x => x.ApplyProcessor(proc));
+            image.Mutate(x => x
+                    .Fill(Color.Azure)
+                    .ApplyProcessor(proc));
             image.SaveAsPng(ms);
             
             ms.Position = 0;
