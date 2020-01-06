@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
+import {Icon} from 'antd';
 
 const Footer = () => {
 
@@ -18,15 +19,18 @@ const Footer = () => {
 
   return (
     <div>
-    <footer className="tc white-80 pv5 pv4-l ph4">
+      <footer className="tc white-80 pv5 pv4-l ph4">
             
-              <h2 className="f6 ml3 pr2">
-              Created by Andrei Ignat and Bogdan Bobe || 
-              Latest commit made by {commit.lastAuthor} at {commit.dateCommit} with the message: {commit.latestCommit}
-              <br />MomentsJS time is now {moment().format('LLLL', commit.dateCommit)} at {moment.locale()}
-              </h2>
+        <h2 className="f6 ml3 pr2">
+              Created by <a href="https://github.com/ignatandrei"> <Icon type="github" /> Andrei Ignat </a> and <a href="https://github.com/shdow"> <Icon type="github" /> Bogdan Bobe </a>
+              <br />
+              Check out this project on <a href="https://github.com/ignatandrei/SimpleBookRental"> <Icon type="github" /> GitHub </a>
+              <br />
+              Latest commit was made {moment(commit.dateCommit, ['YYYY-MM-DD']).fromNow()} by {commit.lastAuthor} at {moment(commit.dateCommit,).format('MMMM Do YYYY, HH:mm:ss')} with the message: {commit.latestCommit}
+              
+        </h2>
             
-        </footer>
+      </footer>
     </div>
   )
 }
