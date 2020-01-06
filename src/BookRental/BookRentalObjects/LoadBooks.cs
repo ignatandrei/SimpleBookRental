@@ -4,7 +4,6 @@ using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Processing.Processors.Text;
 using SixLabors.Primitives;
-using System;
 using System.Collections.Generic;
 //using System.Drawing;
 //using System.Drawing.Imaging;
@@ -28,7 +27,7 @@ namespace BookRentalObjects
             using var ms = new MemoryStream();
             using var image = new Image<Rgba32>(1664, 2560);
             
-            var font = SystemFonts.CreateFont("Arial", 50);
+            var font = SystemFonts.CreateFont("Times New Roman", 50);
             var opt = new TextGraphicsOptions { Antialias = true, WrapTextWidth = 780 };
             
             var brush = Brushes.Solid(Color.Red);
