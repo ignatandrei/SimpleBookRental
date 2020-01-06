@@ -38,9 +38,15 @@ namespace BookRentalAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetImage(int id)
         {
-            var l = new LoadBooks();
-            return File(l.GetImage(id), "image/png");
-
+            try
+            {
+                var l = new LoadBooks();
+                return File(l.GetImage(id), "image/png");
+            }
+            catch(Exception ex)
+            {
+                return Content(ex.Message + " -- " + ex.StackTrace);
+            }
 
         }
         [HttpGet]
