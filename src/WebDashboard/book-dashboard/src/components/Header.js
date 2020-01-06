@@ -1,22 +1,45 @@
 import React from 'react';
+import 'antd/dist/antd.css';
+import { Menu, Icon } from 'antd';
+import { Input } from 'antd';
 
-const Header = () => {
-  return (
-    <div className='tc'>
-      <header className=" w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
-      {<img className="" src="https://img.icons8.com/flat_round/80/000000/bookmark-book.png" />}
-      <nav className="f6 fw6 ttu tracked">
-      
-      <a className="link dim white dib mr3" href="" title="Home">
-       Simple Book Rental</a>
-      <a  className="link dim white dib mr3" href="#" title="About">Rent</a>
-      <a className="link dim white dib mr3" href="#" title="Store">Placeholder</a>
-      <a className="link dim white dib" href="#" title="Contact">Placeholder</a>
-      </nav>
-      </header>
-    </div>
-  );
-  
+const { Search } = Input;
+
+
+
+class Header extends React.Component {
+  state = {
+    current: 'mail',
+  };
+
+  handleClick = e => {
+    console.log('click ', e);
+    this.setState({
+      current: e.key,
+    });
+  };
+
+  render() {
+    return (
+      <Menu className="tc" onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
+        <Menu.Item key="mail">
+          
+          Simple Book Rental
+        </Menu.Item>
+        
+        <Menu.Item key="alipay">
+          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+            My Rented Books
+          </a>
+        </Menu.Item>
+        <Search
+          placeholder="Search Books"
+          onSearch={value => console.log(value)}
+          style={{ width: 200 }}
+        />
+      </Menu>
+    );
+  }
 }
 
 export default Header;
