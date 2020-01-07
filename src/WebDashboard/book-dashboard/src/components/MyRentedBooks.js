@@ -2,8 +2,8 @@ import React from 'react';
 
 const MyRentedBooks = () => {
     return (
-        <div>
-            Testing
+        <div className="tc">
+            <h1>My Rented Books</h1>
         </div>
     )
 }

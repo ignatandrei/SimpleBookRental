@@ -26,7 +26,7 @@ const Footer = () => {
               <br />
               Check out this project on <a href="https://github.com/ignatandrei/SimpleBookRental"> <Icon type="github" /> GitHub </a>
               <br />
-              Latest commit was made {moment(commit.dateCommit, ['YYYY-MM-DD']).fromNow()} by {commit.lastAuthor} at {moment(commit.dateCommit,).format('MMMM Do YYYY, HH:mm:ss')} with the message: {commit.latestCommit}
+              Latest commit was made {moment(commit.dateCommit).startOf('hour').fromNow()} by {commit.lastAuthor} at {moment(commit.dateCommit,).format('MMMM Do YYYY, HH:mm:ss')} with the message: {commit.latestCommit}
               
         </h2>
             
