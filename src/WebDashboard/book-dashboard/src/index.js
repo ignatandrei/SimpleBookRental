@@ -7,16 +7,14 @@ import 'tachyons';
 import { Router } from "react-router-dom";
 import createHistory from 'history/createBrowserHistory';
 import Routes from './components/Routes';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import 'antd/dist/antd.css';
+
 
 const history = createHistory();
 
 ReactDOM.render(
     <Router history={history}>
-        <Header />
         <Routes />
-        <Footer />
     </Router>
     , document.getElementById('root'));
 
