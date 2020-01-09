@@ -1,49 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import BookCard from './BookCard';
-import SearchBox from './SearchBox';
+// import SearchBox from './SearchBox';
+import { BookContext } from './BookContext';
 
 
 const BookCatalog = () => {
 
-  const [ books, setBooks ] = useState([]);
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [searchResults, setSearchResults] = React.useState([]);
-  const handleChange = e => {
-    setSearchTerm(e.target.value);
-  };
-  
-
-    useEffect(() => {
-        const getBooks = async () => {
-            const response = await fetch("https://bookrentalapi20191216080922.azurewebsites.net/Book/GetBooks");
-            const jsonResponse = await response.json();
-            console.log(jsonResponse.books, 'working api');
-            setBooks(jsonResponse.books);
-        };
-
-        getBooks();
-    }, []);
-
-    useEffect(() => {
-      const results = books.filter(books =>
-        books.title.toLowerCase().includes(searchTerm)
-      );
-      setSearchResults(results);
-    }, [searchTerm]);
+  const { books } = useContext(BookContext); 
+  console.log(books, "api bookcatalog")
+ 
+    let bookNotVisible = books.length;
 
     
   return (
     <div className="tc">
 
     <div>
-     <SearchBox 
-     searchTerm={searchTerm}
-     handleChange={handleChange}
-     />
+     
     </div>
     <div>
-    {
-      searchResults.map((book, i) => {
+    { bookNotVisible>0 &&
+      books.map((book, i) => {
         return <BookCard
         key={i}
         id={books[i].id}
