@@ -1,43 +1,36 @@
 import React, { useState, useEffect, useContext} from 'react';
 import { BookContext } from './BookContext';
 import BookCard from './BookCard';
+import RentedBooksTable from './RentedBooksTable';
 
 const MyRentedBooks = () => {
 
     const { books } = useContext(BookContext);
-    const { rentBooks, setRentedBook } = useState({});
+    const [ rentedBooks, setRentedBooks ] = useState({});
 
-    // useEffect(() => {
-    //     const rentBooks = async () => {
-    //         const response = await fetch("https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/RentBook/");
-    //         const jsonResponse = await response.json();
-    //         console.log(jsonResponse.rent, 'working api bookcontext');
-    //         setRentedBook(jsonResponse.rent);
-    //     };
+    useEffect(() => {
+        const rentBooks = async () => {
+            const response = await fetch("https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/RentedBooks");
+            const jsonResponse = await response.json();
+            console.log(jsonResponse.data, 'working api rentedbooks');
+            setRentedBooks(jsonResponse.data);
+        };
     
-    //     rentBooks();
-    // }, []);
+        rentBooks();
+    }, []);
 
     return (
         <div className="tc">
-        <div>
-            <h1>My Rented Books</h1>
-        </div>
-        <div>
-        Rented books
-        </div>
+        
         <div>
         
 
-        {
-            books.map((book,i) => {
-                return <BookCard 
-                    imgId={books[i].id}
-                    id={`https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/RentedBooks/${books[i].id}`}
+        <RentedBooksTable
+                data={books}
                 
                 />
-            })
-        }
+            
+        
 
         </div>
             
