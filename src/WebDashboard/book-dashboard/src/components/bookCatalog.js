@@ -27,6 +27,7 @@ const BookCatalog = () => {
         author={books[i].authors[0].name}
         title={books[i].title}
         description={books[i].description}
+        rentId={books[i].id}
         />
       })
     }
