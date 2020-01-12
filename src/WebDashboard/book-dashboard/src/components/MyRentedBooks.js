@@ -32,7 +32,8 @@ const MyRentedBooks = () => {
         {
             books.map((book,i) => {
                 return <BookCard 
-                    id={"https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/RentedBooks/${book[i].id}"}
+                    imgId={books[i].id}
+                    id={`https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/RentedBooks/${books[i].id}`}
                 
                 />
             })
