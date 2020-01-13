@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookRentalObjects;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 namespace BookRentalAPI.Controllers
@@ -17,12 +18,14 @@ namespace BookRentalAPI.Controllers
     [Route("[controller]/[Action]")]
     public class BookController : ControllerBase
     {
+        private readonly IMemoryCache _memoryCache;
 
         private readonly ILogger<BookController> _logger;
 
-        public BookController(ILogger<BookController> logger)
+        public BookController(ILogger<BookController> logger, IMemoryCache memoryCache)
         {
             _logger = logger;
+            _memoryCache = memoryCache;
         }
 
         [HttpGet]
@@ -41,7 +44,15 @@ namespace BookRentalAPI.Controllers
             try
             {
                 var l = new LoadBooks();
-                return File(l.GetImage(id), "image/png");
+                
+                string name = nameof(GetImage) + id;
+                if (!_memoryCache.TryGetValue(name, out byte[] img))
+                {
+                    img = l.GetImage(id);
+                    _memoryCache.Set(name, img);
+                }
+
+                return File(img, "image/png");
             }
             catch(Exception ex)
             {
