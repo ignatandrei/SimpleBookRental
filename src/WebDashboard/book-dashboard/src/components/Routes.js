@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, Component } from 'react';
 import { Route, Switch } from "react-router-dom";
-import BookCatalog from "./BookCatalog";
+import BookCatalog from "./bookCatalog";
 import MyRentedBooks from './MyRentedBooks';
 import Header from './Header';
 import Footer from './Footer';

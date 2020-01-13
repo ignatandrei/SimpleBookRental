@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext} from 'react';
 import { BookContext } from './BookContext';
-import BookCard from './BookCard';
+import BookCard from './bookCard';
 import RentedBooksTable from './RentedBooksTable';
 
 const MyRentedBooks = () => {

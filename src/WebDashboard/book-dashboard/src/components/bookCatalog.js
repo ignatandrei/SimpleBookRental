@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import BookCard from './BookCard';
+import BookCard from './bookCard';
 // import SearchBox from './SearchBox';
 import { BookContext } from './BookContext';
 
