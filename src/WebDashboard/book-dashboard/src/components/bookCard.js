@@ -11,8 +11,8 @@ const BookCard = ( {author, title, description, imgId, rentId } ) => {
       <h3>Author:<br />{author}</h3>
       <h5 className="mv0">Title:<br />{title}</h5>
       <p className="">Description:<br /> {description}</p>
-      <button onClick={async ()=>{
-        window.alert("trying to rent" + imgId);
+      <Button onClick={async ()=>{
+        window.alert("trying to rent " + imgId);
         var url='https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/RentBook/' +imgId;
         var res= await fetch(url,
           {
@@ -24,15 +24,15 @@ const BookCard = ( {author, title, description, imgId, rentId } ) => {
           var data=(await res.text()).toString();
           var rented=(data === "true");
           if(rented){
-            window.alert(" you have rented the book!");
+            window.alert("You've rented the book!");
           }
           else{
-            window.alert(" Rent failed!"); // TODO: see if it is not already rented
+            window.alert("Rent failed!"); // TODO: see if it is not already rented
           }
 
       }}>
       Rent the {title}
-          </button>
+          </Button>
       
       </div>
       </>    
