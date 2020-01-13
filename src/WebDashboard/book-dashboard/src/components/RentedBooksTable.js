@@ -6,9 +6,8 @@ const { Column, ColumnGroup } = Table;
 const RentedBooksTable = ( { data } ) => {
 
     return (
-        <Table dataSource={data}>
+        <Table dataSource={data} rowKey={record => record.id}>
         <ColumnGroup title="Rented Books">
-
         <Column title="Author" dataIndex="authors[0].name" key="authors.name" />
         <Column title="Title" dataIndex="title" key="title" />
         <Column title="Description" dataIndex="description" key="description" />
