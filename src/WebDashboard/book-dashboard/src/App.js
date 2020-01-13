@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import BookCatalog from './components/BookCatalog';
+import BookCatalog from './components/bookCatalog';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
