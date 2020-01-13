@@ -28,7 +28,7 @@ const MyRentedBooks = () => {
         
 
         <RentedBooksTable
-                data={books}
+                data={rentedBooks}
                 
                 />
             
