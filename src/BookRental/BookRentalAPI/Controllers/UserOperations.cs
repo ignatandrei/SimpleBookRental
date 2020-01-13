@@ -28,10 +28,18 @@ namespace BookRentalAPI.Controllers
             return rb.RentBook(GetActualUser(), id);
             
         }
+        [HttpPost("{uid}/{id}")]
+        public bool UnRentBook(string uid,int id)
+        {
+            var rb = new RentBooks();
+            return rb.UnRentBook(uid, id);
+
+        }
         public RentedBook[] RentedBooks()
         {
             var rb = new RentBooks();
             return rb.UserBooks(GetActualUser());
         }
+
     }
 }

@@ -34,6 +34,20 @@ namespace BookRentalObjects
             books[userName].Add(rb);
             return true;
         }
+
+        public bool UnRentBook(string userName, int bookId)
+        {
+            if (!books.ContainsKey(userName))
+                return false;
+
+            var b = books[userName].FirstOrDefault(it => it.Book.ID == bookId);
+
+            if(b==null)
+                return false;
+            books[userName].Remove(b);
+            return true;
+        }
+
         public RentedBook[] UserBooks(string userName)
         {
             if (!books.ContainsKey(userName))
