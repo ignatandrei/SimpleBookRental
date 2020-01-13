@@ -29,7 +29,7 @@ const BookCard = ( {author, title, description, imgId, rentId } ) => {
             window.alert(" you have rented the book!");
           }
           else{
-            window.alert(" Rent failed!");
+            window.alert(" Rent failed!"); // TODO: see if it is not already rented
           }
 
       }}>

@@ -6,7 +6,7 @@ import RentedBooksTable from './RentedBooksTable';
 const MyRentedBooks = () => {
 
     const { books } = useContext(BookContext);
-    const [ rentedBooks, setRentedBooks ] = useState({});
+    const [ rentedBooks, setRentedBooks ] = useState([]);
     
     useEffect(() => {
         const rentBooks = async () => {
@@ -23,12 +23,14 @@ const MyRentedBooks = () => {
 
     return (
         <div className="tc">
+         
+       
         
         <div>
         
 
         <RentedBooksTable
-                data={books}
+                data={rentedBooks}
                 
                 />
             
