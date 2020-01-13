@@ -10,7 +10,7 @@ const Footer = () => {
         const getCommits = async () => {
             const response = await fetch("https://bookrentalapi20191216080922.azurewebsites.net/Info/GetLatestCommit");
             const jsonResponse = await response.json();
-            console.log(jsonResponse, 'working footer');
+            // console.log(jsonResponse, 'working footer');
             setCommit(jsonResponse);
         };
 
