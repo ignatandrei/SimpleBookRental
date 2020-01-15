@@ -11,7 +11,7 @@ const BookContextProvider = props => {
 
   useEffect(() => {
     const getBooks = async () => {
-        const response = await fetch("https://bookrentalapi20191216080922.azurewebsites.net/Book/GetBooks");
+        const response = await fetch("https://localhost:44308/Book/GetBooks");
         const jsonResponse = await response.json();
         // console.log(jsonResponse.books, 'working api bookcontext');
         setBooks(jsonResponse.books);

@@ -10,7 +10,7 @@ const MyRentedBooks = () => {
     
     useEffect(() => {
         const rentBooks = async () => {
-            const response = await fetch("https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/RentedBooks");
+            const response = await fetch("https://localhost:44308/UserOperations/RentedBooks");
             const jsonResponse = await response.json();
             console.log('working api rentedbooks!');
             console.log(JSON.stringify(jsonResponse));
