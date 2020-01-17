@@ -92,7 +92,7 @@ steps:
       azureSubscription: 'sbr'
       action: 'Start Azure App Service'
       WebAppName: 'bookrental'
-       ResourceGroupName: 'bookrentalrg'
+      ResourceGroupName: 'bookrentalrg'
       #WebAppName: 'BookRentalAPI20191216080922'
       #ResourceGroupName: 'BookRentalRG'
   condition: always() # always restart azure
