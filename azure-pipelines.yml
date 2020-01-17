@@ -71,23 +71,29 @@ steps:
   inputs:
       azureSubscription: 'sbr'
       action: 'Stop Azure App Service'
-      WebAppName: 'BookRentalAPI20191216080922'
-      ResourceGroupName: 'BookRentalRG'
+      #WebAppName: 'BookRentalAPI20191216080922'
+      WebAppName: 'bookrental'
+      #ResourceGroupName: 'BookRentalRG'
+      ResourceGroupName: 'bookrentalrg'
   displayName: stop azure
 
 - task: AzureRmWebAppDeployment@4
   inputs:
     azureSubscription: 'sbr'
-    WebAppName: 'BookRentalAPI20191216080922'
+    #WebAppName: 'BookRentalAPI20191216080922'
+    WebAppName: 'bookrental'
     Package: $(System.ArtifactsDirectory)/*BookRentalAPI*.zip
-    ResourceGroupName: 'BookRentalRG'
+    #ResourceGroupName: 'BookRentalRG'
+    ResourceGroupName: 'bookrentalrg'
   displayName: deploy to azure
   
 - task: AzureAppServiceManage@0
   inputs:
       azureSubscription: 'sbr'
       action: 'Start Azure App Service'
-      WebAppName: 'BookRentalAPI20191216080922'
-      ResourceGroupName: 'BookRentalRG'
+      WebAppName: 'bookrental'
+       ResourceGroupName: 'bookrentalrg'
+      #WebAppName: 'BookRentalAPI20191216080922'
+      #ResourceGroupName: 'BookRentalRG'
   condition: always() # always restart azure
   displayName: start azure    
