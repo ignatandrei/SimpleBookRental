@@ -10,11 +10,12 @@ const RentedBooksTable = ( { data, rentId } ) => {
   
   const [ returnUser, setReturnUser ] = useState([]);
 
-  
+  var f=Function;
   useEffect(() => {
     const getBooks = async () => {
-        const response = await fetch("https://localhost:44308/UserOperations/GetActualUser");
+        const response = await fetch("https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/GetActualUser");
         const jsonResponse = await response.json();
+        //window.alert('aa');
         console.log(jsonResponse.data, 'working api user');
         setReturnUser(jsonResponse.data);
     };
@@ -38,9 +39,10 @@ const RentedBooksTable = ( { data, rentId } ) => {
             <span>
             <a onClick={async ()=>{
 
+              var book = data[0].book;
+              window.alert(`1  ${JSON.stringify( book)}`);
               
-              window.alert(`${imgId}`);
-              var url=`https://localhost:44308/UserOperations/UnRentBook/${returnUser}/${imgId}`;
+               var url=`https://bookrentalapi20191216080922.azurewebsites.net/UserOperations/UnRentBookCurrentUser/${book.id}`;
               var res= await fetch(url,
                 {
                   method: 'post',
@@ -48,8 +50,8 @@ const RentedBooksTable = ( { data, rentId } ) => {
                     'Content-Type': 'text/plain',
                   },
                 });
-              var data=(await res.text()).toString();
-              var rented=(data === "true");
+              var result=(await res.text()).toString();
+              var rented=(result === "true");
               if(rented){
                 window.alert("You've removed this book.");
               }
