@@ -6,16 +6,16 @@
 trigger:
   - master
   
-  pool:
+pool:
     vmImage: 'windows-latest'
   
-  variables:
+variables:
     solution: '**/*.sln'
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Release'
     messagePush: $(Build.SourceVersionMessage)
   
-  steps:
+steps:
   - task: NuGetToolInstaller@1
   
   - task: NuGetCommand@2
