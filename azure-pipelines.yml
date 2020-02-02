@@ -91,4 +91,3 @@ trigger:
         ResourceGroupName: 'BookRentalRG'
     condition: always() # always restart azure
     displayName: start azure    
-  
