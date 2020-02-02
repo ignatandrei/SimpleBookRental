@@ -4,96 +4,91 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- master
-
-pool:
-  vmImage: 'windows-latest'
-
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-  messagePush: $(Build.SourceVersionMessage)
-
-steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-# - task: VSTest@2  
-#   inputs:
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
-- bash: |
-    git log --format='%s' -1
-    git log --pretty=oneline | head -1
-    gitMessage=$(git log --format='%s' -1)
-    echo "##vso[task.setvariable variable=commitMessage;isOutput=true]$gitMessage"    
-  displayName: Store commit message in variable
-
-- powershell: .\modifyinfo.ps1
-  displayName: modify info
-
-- script: |
-    cmd /K set
-    buildAll.bat
-  displayName: build react
-
-
-- script: |
-    dotnet build --configuration $(buildConfiguration) -r linux-x64 src/BookRental/BookRental.sln /m:1
-    dotnet publish src/BookRental/BookRentalAPI/BookRentalAPI.csproj --configuration $(buildConfiguration) --no-build -r linux-x64 -p:PublishSingleFile=false  -o $(Build.ArtifactStagingDirectory)/BookRentalAPI
-  displayName: publish again  
-
-- task: ArchiveFiles@2
-  inputs:
-      rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/BookRentalAPI'
-      includeRootFolder: false
-      archiveType: 'zip' 
-      archiveFile: '$(Build.ArtifactStagingDirectory)/BookRentalAPI.zip' 
-      replaceExistingArchive: true 
-  displayName: 'arhive files'
+  - master
   
-- script: |
-      dir $(System.ArtifactsDirectory)\*.zip /s /b
-  displayName: finding zip after Publish      
-   
-- task: AzureAppServiceManage@0
-  inputs:
-      azureSubscription: 'sbr'
-      action: 'Stop Azure App Service'
-      #WebAppName: 'BookRentalAPI20191216080922'
-      WebAppName: 'bookrental'
-      #ResourceGroupName: 'BookRentalRG'
-      ResourceGroupName: 'bookrentalrg'
-  displayName: stop azure
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    azureSubscription: 'sbr'
-    #WebAppName: 'BookRentalAPI20191216080922'
-    WebAppName: 'bookrental'
-    Package: $(System.ArtifactsDirectory)/*BookRentalAPI*.zip
-    #ResourceGroupName: 'BookRentalRG'
-    ResourceGroupName: 'bookrentalrg'
-  displayName: deploy to azure
+  pool:
+    vmImage: 'windows-latest'
   
-- task: AzureAppServiceManage@0
-  inputs:
+  variables:
+    solution: '**/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+    messagePush: $(Build.SourceVersionMessage)
+  
+  steps:
+  - task: NuGetToolInstaller@1
+  
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '$(solution)'
+  
+  - task: VSBuild@1
+    inputs:
+      solution: '$(solution)'
+      msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+      platform: '$(buildPlatform)'
+      configuration: '$(buildConfiguration)'
+  
+  # - task: VSTest@2  
+  #   inputs:
+  #     platform: '$(buildPlatform)'
+  #     configuration: '$(buildConfiguration)'
+  - bash: |
+      git log --format='%s' -1
+      git log --pretty=oneline | head -1
+      gitMessage=$(git log --format='%s' -1)
+      echo "##vso[task.setvariable variable=commitMessage;isOutput=true]$gitMessage"    
+    displayName: Store commit message in variable
+  
+  - powershell: .\modifyinfo.ps1
+    displayName: modify info
+  
+  - script: |
+      cmd /K set
+      buildAll.bat
+    displayName: build react
+  
+  
+  - script: |
+      dotnet build --configuration $(buildConfiguration) -r linux-x64 src/BookRental/BookRental.sln /m:1
+      dotnet publish src/BookRental/BookRentalAPI/BookRentalAPI.csproj --configuration $(buildConfiguration) --no-build -r linux-x64 -p:PublishSingleFile=false  -o $(Build.ArtifactStagingDirectory)/BookRentalAPI
+    displayName: publish again  
+  
+  - task: ArchiveFiles@2
+    inputs:
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/BookRentalAPI'
+        includeRootFolder: false
+        archiveType: 'zip' 
+        archiveFile: '$(Build.ArtifactStagingDirectory)/BookRentalAPI.zip' 
+        replaceExistingArchive: true 
+    displayName: 'arhive files'
+    
+  - script: |
+        dir $(System.ArtifactsDirectory)\*.zip /s /b
+    displayName: finding zip after Publish      
+     
+  - task: AzureAppServiceManage@0
+    inputs:
+        azureSubscription: 'sbr'
+        action: 'Stop Azure App Service'
+        WebAppName: 'BookRentalAPI20191216080922'
+        ResourceGroupName: 'BookRentalRG'
+    displayName: stop azure
+  
+  - task: AzureRmWebAppDeployment@4
+    inputs:
       azureSubscription: 'sbr'
-      action: 'Start Azure App Service'
-      WebAppName: 'bookrental'
-      ResourceGroupName: 'bookrentalrg'
-      #WebAppName: 'BookRentalAPI20191216080922'
-      #ResourceGroupName: 'BookRentalRG'
-  condition: always() # always restart azure
-  displayName: start azure    
+      WebAppName: 'BookRentalAPI20191216080922'
+      Package: $(System.ArtifactsDirectory)/*BookRentalAPI*.zip
+      ResourceGroupName: 'BookRentalRG'
+    displayName: deploy to azure
+    
+  - task: AzureAppServiceManage@0
+    inputs:
+        azureSubscription: 'sbr'
+        action: 'Start Azure App Service'
+        WebAppName: 'BookRentalAPI20191216080922'
+        ResourceGroupName: 'BookRentalRG'
+    condition: always() # always restart azure
+    displayName: start azure    
+  
