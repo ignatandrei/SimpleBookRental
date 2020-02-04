@@ -18,7 +18,7 @@ namespace BookRentalObjects
         public byte[] GetImage(int bookId)
         {
             var book = Books().FirstOrDefault(it => it.ID == bookId);
-            var name = book == null ? "Not found book" : $"this is image of : {book.Title}";
+            var name = book == null ? "Not found book" : $"(image) : {book.Title}";
             int hash = name.GetHashCode();
             int r = (hash & 0xFF0000) >> 16;
             int g = (hash & 0x00FF00) >> 8;
