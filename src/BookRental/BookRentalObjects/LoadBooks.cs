@@ -25,7 +25,8 @@ namespace BookRentalObjects
             int b = hash & 0x0000FF;
 
             using var ms = new MemoryStream();
-            using var image = new Image<Rgba32>(1664, 2560);
+            //using var image = new Image<Rgba32>(1664, 2560);
+            using var image = new Image<Rgba32>(416, 640);
             //var allFonts= SystemFonts.Collection.Families.Union(SystemFonts.Families);
             //var font = SystemFonts.CreateFont(allFonts.First().Name, 50);
 
