@@ -28,13 +28,13 @@ namespace BookRentalObjects
             //using var image = new Image<Rgba32>(1664, 2560);
             using var image = new Image<Rgba32>(416, 640);
             //var allFonts= SystemFonts.Collection.Families.Union(SystemFonts.Families);
-            //var font = SystemFonts.CreateFont(allFonts.First().Name, 50);
+            //var font = SystemFonts.CreateFont(allFonts.First().Name, 30);
 
             FontCollection fonts = new FontCollection();
             
             FontFamily font1 = fonts.Install("bakery.ttf");
             var font = new Font(font1, 50);
-            var opt = new TextGraphicsOptions { Antialias = true, WrapTextWidth = 780 };
+            var opt = new TextGraphicsOptions { Antialias = true, WrapTextWidth = 350 };
             
             var brush = Brushes.Solid(Color.Red);
             var start = new PointF(image.Width / 3, image.Height / 3);
