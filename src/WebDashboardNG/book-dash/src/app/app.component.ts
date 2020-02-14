@@ -17,7 +17,10 @@ export class AppComponent {
     
   }
   ngOnInit() {
-    this.booksService.getBookApi().subscribe(data => this.books = data.books);
+    this.booksService.getBookApi().subscribe(data =>{ 
+      this.books = data.books;
+      this.books.map(it=>it);
+    });
     console.log(JSON.stringify(this.books));
   }
   
