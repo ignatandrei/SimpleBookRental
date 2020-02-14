@@ -75,7 +75,7 @@ namespace BookRentalAPI
                 app.UseDeveloperExceptionPage();
             }
             app.UseAuthentication();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseRouting();

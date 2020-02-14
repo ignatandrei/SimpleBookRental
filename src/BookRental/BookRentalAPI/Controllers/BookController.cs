@@ -51,8 +51,8 @@ namespace BookRentalAPI.Controllers
                     img = l.GetImage(id);
                     _memoryCache.Set(name, img);
                 }
-
-                return File(img, "image/png");
+                var result = File(img, "image/png");
+                return await Task.FromResult(result);
             }
             catch(Exception ex)
             {
