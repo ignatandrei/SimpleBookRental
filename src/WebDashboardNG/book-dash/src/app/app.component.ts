@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BookApiService } from './book-api.service';
-import { Books } from './Books';
+import { Books } from "./Books";
+import { Book } from './Book';
 
 
 @Component({
@@ -10,17 +11,14 @@ import { Books } from './Books';
 })
 export class AppComponent {
   title = 'book-dash';
-  public books = [];
-  // books: Books[];
-  // books$;
+  public books : Book[];
+  
   constructor( private booksService: BookApiService ) {
-    // fetchBookApi() {
-    //  this.books$ = this.booksService.fetchBookApi()
-    // };
+    
   }
   ngOnInit() {
-    this.booksService.getBookApi().subscribe(data => this.books = data);
-    console.log(this.books);
+    this.booksService.getBookApi().subscribe(data => this.books = data.books);
+    console.log(JSON.stringify(this.books));
   }
   
   

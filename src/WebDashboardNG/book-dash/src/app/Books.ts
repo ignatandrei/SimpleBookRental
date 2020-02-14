@@ -1,7 +1,5 @@
+import { Book } from './Book';
+
 export class Books {
-    id: number;
-    title: string;
-    description: string;
-
-
-};
+    books: Book[];
+}
