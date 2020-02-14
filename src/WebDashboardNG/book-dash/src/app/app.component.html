@@ -1,4 +1,6 @@
-<h1>Working Api</h1>
+<h1>Working Api {{expectingData}}</h1>
 
-<h2>testing: {{books.length}}</h2>
-<h3>testing: {{books[1].title}}</h3>
+<h2>testing: {{books?.length}}</h2>
+<div *ngFor ="let b of books">
+    Aici va fi <app-book [myBook] ="b" ></app-book>
+</div>
