@@ -18,14 +18,28 @@ namespace BookRentalAPI.Controllers
     {
         public CommitInfo GetLatestCommit()
         {
-            return
-                new CommitInfo()
-                {
-                    LatestCommit = "{LatestCommit}",
-                    DateCommit = DateTime.ParseExact("{DateCommit}","yyyyMMdd:HHmmss", null),
-                    LastAuthor = "{LastAuthor}"
-                }
-                ;
+            try
+            {
+                return
+                    new CommitInfo()
+                    {
+                        LatestCommit = "{LatestCommit}",
+                        DateCommit = DateTime.ParseExact("{DateCommit}", "yyyyMMdd:HHmmss", null),
+                        LastAuthor = "{LastAuthor}"
+                    }
+                    ;
+            }
+            catch(Exception ex)
+            {
+                return
+                    new CommitInfo()
+                    {
+                        LatestCommit = "unknown commit",
+                        DateCommit = DateTime.UtcNow,
+                        LastAuthor = "Both"
+                    }
+                    ;
+            }
         }
     }
 }
