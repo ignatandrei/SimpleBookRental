@@ -1,6 +1,9 @@
-<h1>Working Api {{expectingData}}</h1>
+<app-header></app-header>
+<h1>Working Api</h1>
 
 <h2>testing: {{books?.length}}</h2>
 <div *ngFor ="let b of books">
-    Aici va fi <app-book [myBook] ="b" ></app-book>
+    <app-book [myBook] ="b" ></app-book>
 </div>
+<app-footer></app-footer>
+
