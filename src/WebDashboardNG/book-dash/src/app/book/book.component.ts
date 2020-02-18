@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BookApiService } from '../book-api.service';
+import { Books } from "../Books";
 import { Book } from '../Book';
+
 
 @Component({
   selector: 'app-book',
@@ -8,11 +11,19 @@ import { Book } from '../Book';
 })
 export class BookComponent implements OnInit {
 
-  @Input()
-  public myBook: Book;
-  constructor() { }
+  public books : Book[];
 
-  ngOnInit(): void {
+  
+  constructor( private booksService: BookApiService ) {
+    
+  }
+  ngOnInit() {
+    this.booksService.getBookApi().subscribe(data =>{ 
+      this.books = data.books;
+      
+
+    });
+    console.log(JSON.stringify(this.books));
   }
 
 }

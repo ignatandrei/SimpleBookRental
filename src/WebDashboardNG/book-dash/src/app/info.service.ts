@@ -11,9 +11,9 @@ export class InfoService {
 
   constructor(private http: HttpClient) { }
 
-  getLatestInfo(): Observable<Info> {
+  getLatestInfo(): Observable<Info[]> {
     let infoUrl = environment.apiUrl;
 
-    return this.http.get<Info>(infoUrl + 'Info/GetLatestCommit');
+    return this.http.get<Info[]>(infoUrl + 'Info/GetLatestCommit');
   }
 }

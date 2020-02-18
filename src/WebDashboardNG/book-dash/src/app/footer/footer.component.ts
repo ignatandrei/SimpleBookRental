@@ -13,14 +13,14 @@ import * as moment from 'moment';
 export class FooterComponent {
 public infos : Info[];
 
-  constructor( private infoService: InfoService) { }
+  constructor( private infoService: InfoService ) { }
 
   ngOnInit() {
     this.infoService.getLatestInfo().subscribe(data => {
       this.infos = data;
 
     })
-
+    console.log(JSON.stringify(this.infos));
     let dateCommit = moment(this.infos.dateCommit).startOf('hour').fromNow();
     let hourCommit = moment(this.infos.dateCommit).format('MMMM Do YYYY, HH:mm:ss');
   
