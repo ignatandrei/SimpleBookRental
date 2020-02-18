@@ -11,6 +11,7 @@ import en from '@angular/common/locales/en';
 import { BookComponent } from './book/book.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { BookCatalogComponent } from './book-catalog/book-catalog.component';
 
 registerLocaleData(en);
 
@@ -19,7 +20,8 @@ registerLocaleData(en);
     AppComponent,
     BookComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BookCatalogComponent
   ],
   imports: [
     BrowserModule,

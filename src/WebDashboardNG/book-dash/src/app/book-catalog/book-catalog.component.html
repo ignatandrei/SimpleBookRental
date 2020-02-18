@@ -1,0 +1,5 @@
+<p>book-catalog works!</p>
+<h1>books is : {{books.length}}</h1>
+<div *ngFor ="let b of books">
+    <app-book [myBook] ="b" ></app-book>
+</div>
