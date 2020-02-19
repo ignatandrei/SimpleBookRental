@@ -12,6 +12,7 @@ import { BookComponent } from './book/book.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BookCatalogComponent } from './book-catalog/book-catalog.component';
+import 'tachyons';
 
 registerLocaleData(en);
 
