@@ -10,19 +10,24 @@ import * as moment from 'moment';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent {
-public infos : Info[];
+export class FooterComponent implements OnInit {
 
+  public infos : Infos;
+  public dateCommit: string;
+  public hourCommit : string;
   constructor( private infoService: InfoService ) { }
 
   ngOnInit() {
     this.infoService.getLatestInfo().subscribe(data => {
-      this.infos = data;
 
-    })
-    console.log(JSON.stringify(this.infos));
-    let dateCommit = moment(this.infos.dateCommit).startOf('hour').fromNow();
-    let hourCommit = moment(this.infos.dateCommit).format('MMMM Do YYYY, HH:mm:ss');
+      this.infos = data;
+      console.log('obtained ' + JSON.stringify(this.infos));
+      this.dateCommit = moment(this.infos.dateCommit).startOf('hour').fromNow();
+      this.hourCommit = moment(this.infos.dateCommit).format('MMMM Do YYYY, HH:mm:ss');
+    
+    });
+    
+    
   
   }
 

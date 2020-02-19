@@ -1,6 +1,6 @@
 export class Infos {
     latestCommit: string;
-    dateCommit: number;
+    dateCommit: string;
     lastAuthor: string;
 
 }
