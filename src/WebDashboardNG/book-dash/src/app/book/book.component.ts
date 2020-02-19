@@ -29,12 +29,12 @@ export class BookComponent implements OnInit {
     this.book.authors.push(a);
   }
   ngOnInit() {
-    this.booksService.getBookApi().subscribe(data =>{ 
-      this.books = data.books;
+    // this.booksService.getBookApi().subscribe(data =>{ 
+    //   //this.books = data.books;
       
 
-    });
-    console.log(JSON.stringify(this.books));
+    // });
+    //console.log(JSON.stringify(this.books));
   }
 
 }
