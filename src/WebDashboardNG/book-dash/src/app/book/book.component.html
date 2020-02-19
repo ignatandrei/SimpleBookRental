@@ -1,15 +1,14 @@
 <p>book works!</p>
-titlu {{books?.title}}
+titlu {{book?.title}}
 
-<li *ngFor ="let book of books">
-    
-</li>
 <div class="tc dib br2 ba dark-gray b--black-10 w-20 mv4 mh2 h-25 mw-30 bg-near-white">
     <img class="br2 br--top h-25 w-100" alt='book' />
     
     <h3>Author:<br /></h3>
-    <h5 class="mv0">Title:<br />{{books.title}}</h5>
-    <p class="">Description:<br /> {{books.description}}</p>
+    <h5 class="mv0">Title:<br />{{book?.title}}</h5>
+    <p class="">Description:<br /> {{book?.description}}</p>
+
+    Autori: {{book?.authors?.length}} xx
     <Button>
     Rent Book
         </Button>
