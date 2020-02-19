@@ -8,6 +8,8 @@ import { AppComponent } from '../app.component';
 })
 export class BookCatalogComponent implements OnInit {
 
+  // please read https://angular.io/guide/component-interaction
+  // Pass data from parent to child with input binding
   constructor() { }
 
   ngOnInit(): void {
