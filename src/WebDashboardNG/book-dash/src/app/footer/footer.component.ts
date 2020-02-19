@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoService } from '../info.service';
 import { Infos } from '../infos';
-import { Info } from '../info';
 import * as moment from 'moment';
 
 

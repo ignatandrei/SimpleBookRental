@@ -1,16 +1,19 @@
-<p>book works!</p>
-titlu {{book?.title}}
-
-<div class="tc dib br2 ba dark-gray b--black-10 w-20 mv4 mh2 h-25 mw-30 bg-near-white">
-    <img class="br2 br--top h-25 w-100" alt='book' />
-    
-    <h3>Author:<br /></h3>
-    <h5 class="mv0">Title:<br />{{book?.title}}</h5>
-    <p class="">Description:<br /> {{book?.description}}</p>
-
-    Autori: {{book?.authors?.length}} xx
-    <Button>
-    Rent Book
-        </Button>
-    
+<div class="dib br2 ba dark-gray b--black-10 w-20 mv4 mh2 mw-30 bg-near-white">
+    <!-- <img class="br2 br--top h-25 w-100" alt="book" src="https://localhost:5001/Book/GetImage/{{book.id}}"/> -->
+    <div class="fl w-40">
+        <img class="br2 br--top h-25 w-100" alt="book" src="https://images-na.ssl-images-amazon.com/images/I/91cO-IrKBpL.jpg"/>
     </div>
+    
+    
+    <div class="fl w-60 pt5">
+        <h3 class="mv0 b">{{book.title}}</h3>
+        <p class="f6">{{book.description}}</p>
+        <h3>ID: {{book.id}}</h3>
+        <h3>By: {{book.authors[0].name}}</h3>
+        <Button nz-button nzType="primary">Rent Book</Button>
+    </div>
+</div>
+    
+    
+    
+  

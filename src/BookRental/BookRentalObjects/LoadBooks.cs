@@ -99,6 +99,11 @@ namespace BookRentalObjects
                 ID = authors.Count + 1,
                 Name = "Rowling, J.K."
             });
+            authors.Add(new Author()
+            {
+                ID = authors.Count + 1,
+                Name = "Andrzej Sapkowski"
+            });
             return authors.ToArray();
         }
         public Book[] Books()
@@ -109,13 +114,15 @@ namespace BookRentalObjects
             {
                 ID=books.Count+1,
                 Title="1984",
-                Authors=authors.Where(it=>it.Name.Contains("Orwell")).ToArray(),
+                Description = "A Witcher Novel",
+                Authors =authors.Where(it=>it.Name.Contains("Orwell")).ToArray(),
 
             });
             books.Add(new Book()
             {
                 ID = books.Count + 1,
                 Title = "Animal Farm",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Orwell")).ToArray(),
 
             });
@@ -123,6 +130,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "A History of Religious Ideas (Vol. 1, Vol. 2, Vol. 3)",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Eliade")).ToArray(),
 
             });
@@ -130,59 +138,75 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "12 Rules for LifeAn Antidote to Chaos",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Peterson")).ToArray(),
 
             });
             books.Add(new Book()
             {
                 ID = books.Count + 1,
-                Title = "Harry Potter vol 1",
+                Title = "The Philosopher's Stone",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
             books.Add(new Book()
             {
                 ID = books.Count + 1,
-                Title = "Harry Potter vol 2",
+                Title = "The Chamber of Secrets",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
              books.Add(new Book()
             {
                 ID = books.Count + 1,
-                Title = "Harry Potter vol 3",
-                Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
+                Title = "The Prisoner of Azkaban",
+                 Description = "A Witcher Novel",
+                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
             books.Add(new Book()
             {
                 ID = books.Count + 1,
-                Title = "Harry Potter vol 4",
+                Title = "The Goblet of Fire",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
              books.Add(new Book()
             {
                 ID = books.Count + 1,
-                Title = "Harry Potter vol 5",
+                Title = "The Order of the Phoenix",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
             books.Add(new Book()
             {
                 ID = books.Count + 1,
-                Title = "Harry Potter vol 6",
+                Title = "The Half-Blood Prince",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
             books.Add(new Book()
             {
                 ID = books.Count + 1,
-                Title = "Harry Potter vol 7",
+                Title = "The Deathly Hallows",
+                Description = "A Witcher Novel",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
-            
+            books.Add(new Book()
+            {
+                ID = books.Count + 1,
+                Title = "The Last Wish",
+                Description = "A Witcher Novel",
+                Authors = authors.Where(it => it.Name.Contains("Andrzej Sapkowski")).ToArray(),
+
+            });
+
             return books.ToArray();
 
             
