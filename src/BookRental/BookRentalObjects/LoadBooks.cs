@@ -114,7 +114,7 @@ namespace BookRentalObjects
             {
                 ID=books.Count+1,
                 Title="1984",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors =authors.Where(it=>it.Name.Contains("Orwell")).ToArray(),
 
             });
@@ -122,7 +122,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "Animal Farm",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Orwell")).ToArray(),
 
             });
@@ -130,15 +130,15 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "A History of Religious Ideas (Vol. 1, Vol. 2, Vol. 3)",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Eliade")).ToArray(),
 
             });
             books.Add(new Book()
             {
                 ID = books.Count + 1,
-                Title = "12 Rules for LifeAn Antidote to Chaos",
-                Description = "A Witcher Novel",
+                Title = "12 Rules for Life: An Antidote to Chaos",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Peterson")).ToArray(),
 
             });
@@ -146,7 +146,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "The Philosopher's Stone",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
@@ -154,7 +154,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "The Chamber of Secrets",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
@@ -162,7 +162,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "The Prisoner of Azkaban",
-                 Description = "A Witcher Novel",
+                 Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                  Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
@@ -170,7 +170,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "The Goblet of Fire",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
@@ -178,7 +178,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "The Order of the Phoenix",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
@@ -186,7 +186,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "The Half-Blood Prince",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
@@ -194,7 +194,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "The Deathly Hallows",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Rowling")).ToArray(),
 
             });
@@ -202,7 +202,7 @@ namespace BookRentalObjects
             {
                 ID = books.Count + 1,
                 Title = "The Last Wish",
-                Description = "A Witcher Novel",
+                Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Andrzej Sapkowski")).ToArray(),
 
             });
