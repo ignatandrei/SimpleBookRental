@@ -15,5 +15,10 @@ export class BookApiService {
     
     return this.http.get<Books>(url + 'Book/GetBooks');
   }
+  // rentABook(book: Books): Observable<Books> {
+  //   let rentUrl = environment.apiUrl;
+  //   return this.http.post<Books>(rentUrl + 'UserOperations/RentBook', book, httpOptions);  //TODO: finish rentabook post
+      
+  // }
 
 }
