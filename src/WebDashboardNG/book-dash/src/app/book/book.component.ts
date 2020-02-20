@@ -22,9 +22,11 @@ export class BookComponent implements OnInit {
   this.imageUrl = environment.apiUrl + 'Book/GetImage';
   }
   ngOnInit() {
-    
-      
+    //TODO: add call to /UserOperations/RentedBooks
+      //and display rented books with different color / etc...
 
+      //TODO: add rent button
+      //https://angular.io/tutorial/toh-pt2 ,  (click)="onSelect(hero)
     }
     
   }
