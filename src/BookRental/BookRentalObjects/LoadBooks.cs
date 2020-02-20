@@ -17,6 +17,11 @@ namespace BookRentalObjects
     {
         public byte[] GetImage(int bookId)
         {
+            string fileName = $"wwwroot/images/{bookId}.jpg";
+            if (File.Exists(fileName))
+            {
+                return File.ReadAllBytes(fileName);
+            }
             var book = Books().FirstOrDefault(it => it.ID == bookId);
             var name = book == null ? "Not found book" : $"(image) : {book.Title}";
             int hash = name.GetHashCode();
@@ -26,18 +31,18 @@ namespace BookRentalObjects
 
             using var ms = new MemoryStream();
             //using var image = new Image<Rgba32>(1664, 2560);
-            using var image = new Image<Rgba32>(416, 640);
+            using var image = new Image<Rgba32>(259, 400);
             //var allFonts= SystemFonts.Collection.Families.Union(SystemFonts.Families);
             //var font = SystemFonts.CreateFont(allFonts.First().Name, 30);
 
             FontCollection fonts = new FontCollection();
             
             FontFamily font1 = fonts.Install("bakery.ttf");
-            var font = new Font(font1, 50);
+            var font = new Font(font1, 20);
             var opt = new TextGraphicsOptions { Antialias = true, WrapTextWidth = 350 };
             
             var brush = Brushes.Solid(Color.Red);
-            var start = new PointF(image.Width / 3, image.Height / 3);
+            var start = new PointF(10, 10 );
             var proc= new DrawTextProcessor(opt, name, font, brush, null,start );
             image.Mutate(x => x
                     .Fill(Color.Azure)
