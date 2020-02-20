@@ -1,0 +1,26 @@
+<nz-table #basicTable [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th>Book ID</th>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Rental Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.book.id }}</td>
+        <td *ngFor="let author of data.book.authors">{{ author.name }}</td> 
+        <td>{{ data.book.title }}</td>
+        <td>{{ data.book.description }}</td>
+        <td>{{ data.fromDate }}</td>
+        <td>{{ data.toDate }}</td>
+        <td>
+            <a>Cancel 一 {{ data.book.title }}</a>
+          </td>
+      </tr>
+    </tbody>
+  </nz-table>

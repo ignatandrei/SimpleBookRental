@@ -13,8 +13,13 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BookCatalogComponent } from './book-catalog/book-catalog.component';
 import 'tachyons';
+import { BookRentalPageComponent } from './book-rental-page/book-rental-page.component';
+import { RentedBookPageComponent } from './rented-book-page/rented-book-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(en);
+
+
 
 @NgModule({
   declarations: [
@@ -22,14 +27,18 @@ registerLocaleData(en);
     BookComponent,
     HeaderComponent,
     FooterComponent,
-    BookCatalogComponent
+    BookCatalogComponent,
+    BookRentalPageComponent,
+    RentedBookPageComponent
   ],
   imports: [
     BrowserModule,
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
