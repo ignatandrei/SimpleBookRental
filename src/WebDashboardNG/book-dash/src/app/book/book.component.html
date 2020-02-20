@@ -11,9 +11,9 @@
     <div class="fl w-60 pt5 pb5 pr2 pl2">
       <h3 class="mv0 b">{{ book.title }}</h3>
       <!-- <p class="f6">{{ book.description }}</p> -->
-      <h3>ID: {{ book.id }}</h3>
+      <!-- <h3>ID: {{ book.id }}</h3> -->
       <h3 *ngFor="let author of book.authors">
-        By: {{ author.name }}
+        {{ author.name }}
         </h3>
       <Button nz-button nzType="primary">Rent Book</Button>
     </div>
