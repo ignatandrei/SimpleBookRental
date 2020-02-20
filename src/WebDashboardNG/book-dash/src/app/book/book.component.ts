@@ -27,6 +27,9 @@ export class BookComponent implements OnInit {
 
       //TODO: add rent button
       //https://angular.io/tutorial/toh-pt2 ,  (click)="onSelect(hero)
+
+      //TODO: search books
+      //https://angular.io/guide/practical-observable-usage
     }
     
   }
