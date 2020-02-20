@@ -3,6 +3,7 @@ import { BookApiService } from '../book-api.service';
 import { Books } from "../Books";
 import { Book } from '../Book';
 import { Author } from '../Author';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -15,11 +16,10 @@ export class BookComponent implements OnInit {
   @Input() 
   public book : Book;
   
-
+  public imageUrl: string;
   
   constructor(  ) {
-    //to be deteled, because it will be injected Pass data from parent to child with input binding
-    
+  this.imageUrl = environment.apiUrl + 'Book/GetImage';
   }
   ngOnInit() {
     
