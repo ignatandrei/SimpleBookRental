@@ -5,6 +5,12 @@ import { RentedBookPageComponent } from './rented-book-page/rented-book-page.com
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  // default path properties
+  {
+    path: '',
+    redirectTo: "/books-rental-page",
+    pathMatch: 'full'
+  },
   { path: 'books-rental-page', component: BookRentalPageComponent },
   { path: 'rented-books-page', component: RentedBookPageComponent }
 ];
