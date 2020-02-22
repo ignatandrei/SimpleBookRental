@@ -25,6 +25,9 @@ export class BookCatalogComponent implements OnInit {
       
       console.log(this.books);
     });
+    this.booksService.rentABook().subscribe(data =>{
+      this.books = data.books;
+    })
    
   }
 
