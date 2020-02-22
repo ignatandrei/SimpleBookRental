@@ -8,17 +8,18 @@ import { Books } from './Books';
   providedIn: 'root'
 })
 export class BookApiService {
+private url = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
   getBookApi(): Observable<Books> {
-    let url = environment.apiUrl;
     
-    return this.http.get<Books>(url + 'Book/GetBooks');
+    
+    return this.http.get<Books>(this.url + 'Book/GetBooks');
   }
-  // rentABook(book: Books): Observable<Books> {
-  //   let rentUrl = environment.apiUrl;
-  //   return this.http.post<Books>(rentUrl + 'UserOperations/RentBook', book, httpOptions);  //TODO: finish rentabook post
+  rentABook(book: Books): Observable<Books> {
+    
+    return this.http.post<Books>(this.url + 'UserOperations/RentBook' + this.books.id, book);  //TODO: finish rentabook post
       
-  // }
+  }
 
 }
