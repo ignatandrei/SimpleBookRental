@@ -15,7 +15,7 @@
       <h3 *ngFor="let author of book.authors">
         {{ author.name }}
         </h3>
-      <Button nz-button nzType="primary" (click)="rentABook()">Rent Book</Button>
+      <Button nz-button nzType="primary" (click)="rentABook({{book.id}})">Rent Book</Button>
     </div>
   </div>
 

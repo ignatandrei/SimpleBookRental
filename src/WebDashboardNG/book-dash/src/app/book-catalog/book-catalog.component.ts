@@ -14,6 +14,7 @@ export class BookCatalogComponent implements OnInit {
 
   public books: Book[];
   
+  
 
   // please read https://angular.io/guide/component-interaction
   // Pass data from parent to child with input binding
@@ -25,9 +26,8 @@ export class BookCatalogComponent implements OnInit {
       
       console.log(this.books);
     });
-    this.booksService.rentABook().subscribe(data =>{
-      this.books = data.books;
-    })
+    this.booksService.rentABook(this.books).subscribe((data : id) => this.books = Object.assign({}, this.books, { id: id })
+    )
    
   }
 
