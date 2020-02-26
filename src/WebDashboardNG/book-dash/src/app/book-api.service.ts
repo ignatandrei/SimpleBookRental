@@ -5,17 +5,17 @@ import { environment } from '../environments/environment';
 import { Books } from './Books';
 import { Book } from './Book';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/text'
+  })
+};
+  
 @Injectable({
   providedIn: 'root'
  
 })
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-  })
-};
-  
 export class BookApiService {
   
 private url = environment.apiUrl;
@@ -26,9 +26,9 @@ private url = environment.apiUrl;
     
     return this.http.get<Books>(this.url + 'Book/GetBooks');
   }
-  rentABook(book : Book[]): Observable<Book[]> {
+  rentABook(bookId : number): Observable<boolean> {
     
-    return this.http.post<Book[]>(this.url + 'UserOperations/RentBook/', book, httpOptions);  //TODO: finish rentabook post
+    return this.http.post<boolean>(this.url + `UserOperations/RentBook/${bookId}`,null);  //TODO: finish rentabook post
       
   }
 

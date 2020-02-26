@@ -15,10 +15,10 @@ export class BookComponent implements OnInit {
 
   @Input() 
   public book : Book;
-  
+  public bookRented: bool = false;
   public imageUrl: string;
   
-  constructor(  ) {
+  constructor( private rentBookService: BookApiService ) {
   this.imageUrl = environment.apiUrl + 'Book/GetImage';
   }
   ngOnInit() {
@@ -32,6 +32,16 @@ export class BookComponent implements OnInit {
       //https://angular.io/guide/practical-observable-usage
     }
     
+    public rentABook(){
+      this.rentBookService.rentABook(this.book.id).subscribe(data=> {
+        if (data == true) {
+          window.alert("Success");
+          this.bookRented = true;
+        } else {
+          window.alert("Failed");
+        }
+      })
+    }
   }
 
 

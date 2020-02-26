@@ -26,8 +26,7 @@ export class BookCatalogComponent implements OnInit {
       
       console.log(this.books);
     });
-    this.booksService.rentABook(this.books).subscribe((data : id) => this.books = Object.assign({}, this.books, { id: id })
-    )
+    // this.booksService.rentABook(this.books).subscribe((data : id) => this.books = Object.assign({}, this.books, { id: id }))
    
   }
 
