@@ -30,7 +30,8 @@ registerLocaleData(en);
     FooterComponent,
     BookCatalogComponent,
     BookRentalPageComponent,
-    RentedBookPageComponent
+    RentedBookPageComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -39,6 +40,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    NzInputModule
     
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
