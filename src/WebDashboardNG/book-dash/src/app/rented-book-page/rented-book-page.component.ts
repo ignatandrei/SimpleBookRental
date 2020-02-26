@@ -21,6 +21,7 @@ export class RentedBookPageComponent implements OnInit {
       
       
     });
+    //TODO : unrent book
   }
 
 }
