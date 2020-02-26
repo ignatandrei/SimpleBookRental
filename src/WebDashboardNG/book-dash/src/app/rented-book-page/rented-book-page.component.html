@@ -16,10 +16,10 @@
         <td *ngFor="let author of data.book.authors">{{ author.name }}</td> 
         <td>{{ data.book.title }}</td>
         <td>{{ data.book.description }}</td>
-        <td>{{ data.fromDate }}</td>
-        <td>{{ data.toDate }}</td>
+        <td>{{ fromDate }}</td>
+        <td>{{ toDate }}</td>
         <td>
-            <a>Cancel 一 {{ data.book.title }}</a>
+            <button nz-button nzType="danger" (click)="unRentBook()">Cancel 一 {{ data.book.title }}</button>
           </td>
       </tr>
     </tbody>
