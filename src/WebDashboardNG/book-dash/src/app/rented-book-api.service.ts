@@ -9,12 +9,17 @@ import { RentedBooks } from './RentedBooks';
 })
 export class RentedBookApiService {
 
+  private rentedBookUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   getRentedBooks(): Observable<RentedBooks[]> {
 
-    const rentedBookUrl = environment.apiUrl;
+    
 
-    return this.http.get<RentedBooks[]>(rentedBookUrl + 'UserOperations/RentedBooks');
+    return this.http.get<RentedBooks[]>(this.rentedBookUrl + 'UserOperations/RentedBooks');
+  }
+
+  unRentBook(rentedBookId : number): Observable<boolean> {
+    return this.http.post<boolean>(this.rentedBookUrl + `UserOperations/UnRentBookCurrentUser/${rentedBookId}`, null)
   }
 }

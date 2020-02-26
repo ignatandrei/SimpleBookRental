@@ -17,7 +17,7 @@ export class BookComponent implements OnInit {
   public book : Book;
   public bookRented: boolean = false;
   public imageUrl: string;
-  public rentStatus : string = "Rent Book"
+  public rentStatus : string = "Rent Book";
   
   constructor( private rentBookService: BookApiService ) {
   this.imageUrl = environment.apiUrl + 'Book/GetImage';
@@ -26,8 +26,6 @@ export class BookComponent implements OnInit {
     //TODO: add call to /UserOperations/RentedBooks
       //and display rented books with different color / etc...
 
-      //TODO: add rent button
-      //https://angular.io/tutorial/toh-pt2 ,  (click)="onSelect(hero)
 
       //TODO: search books
       //https://angular.io/guide/practical-observable-usage
@@ -37,11 +35,10 @@ export class BookComponent implements OnInit {
     public rentABook(){
       this.rentBookService.rentABook(this.book.id).subscribe(data=> {
         if (data == true) {
-          window.alert("Success");
           this.bookRented = true;
           this.rentStatus = "Book is rented";
         } else {
-          window.alert("Failed");
+          window.alert("Couldn't rent the book");
           
       }});
     }
