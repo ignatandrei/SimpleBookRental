@@ -35,8 +35,8 @@ export class RentedBookPageComponent implements OnInit {
   
   
 
-  unRentBook(){
-    this.rentedBooksService.unRentBook(this.listOfData[0].book.id).subscribe(data=> {
+  unRentBook(id:number){
+    this.rentedBooksService.unRentBook(id).subscribe(data=> {
       if (data == true) {
         this.cancelRental = true;
         console.log("cancel rental" + this.cancelRental + this.rentedBook.id)

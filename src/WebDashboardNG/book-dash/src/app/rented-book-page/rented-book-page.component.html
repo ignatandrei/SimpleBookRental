@@ -19,7 +19,7 @@
         <td>{{ fromDate }}</td>
         <td>{{ toDate }}</td>
         <td>
-            <button nz-button nzType="danger" (click)="unRentBook()">Cancel 一 {{ data.book.title }}</button>
+            <button nz-button nzType="danger" (click)="unRentBook(data.book.id)">Cancel 一 {{ data.book.title }}</button>
           </td>
       </tr>
     </tbody>
