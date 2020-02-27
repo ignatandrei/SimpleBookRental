@@ -1,7 +1,7 @@
-import { RentedBook } from './RentedBook';
+import { Book } from './Book';
 
 export class RentedBooks {
-    book: RentedBook;// should be book
+    book: Book;
     fromDate: string;
     toDate: string;
 
