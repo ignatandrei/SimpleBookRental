@@ -30,7 +30,7 @@ export class RentedBookPageComponent implements OnInit {
       }
 
     });
-    it;
+    
 
 
   }
@@ -41,7 +41,7 @@ export class RentedBookPageComponent implements OnInit {
       if (data == true) {
         // this se refera la acest component care are TOT array de carti
         // this.cancelRental = true;
-        // eu vreau pe book
+        // eu vreau pe book 
         const findIDArray =this.listOfData.filter(it => it.book.id === id);
         console.log(`found number book array rented with id ${id} : ${findIDArray.length}`);
         //should be one - we discuss if the argument in id or bookrented
