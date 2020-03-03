@@ -17,9 +17,6 @@ export class RentedBookPageComponent implements OnInit {
   public listOfData : RentedBooks[];
   public deleteBook: boolean = true;
 
-  public cancelRental: boolean = false;
-  public listOfData: RentedBooks[];
-
   public fromDate: string;
   public toDate: string;
   constructor(private rentedBooksService: RentedBookApiService) { }
@@ -31,7 +28,7 @@ export class RentedBookPageComponent implements OnInit {
       for (const list of this.listOfData) {
         this.fromDate = moment(list.fromDate).format('MMMM Do YYYY, HH:mm:ss');
         this.toDate = moment(list.toDate).format('MMMM Do YYYY, HH:mm:ss');
-        list.cancelRental = false;
+     
       }
 
     });
