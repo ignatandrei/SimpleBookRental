@@ -17,23 +17,27 @@ export class RentedBookPageComponent implements OnInit {
   public listOfData : RentedBooks[];
   public deleteBook: boolean = true;
 
-  public fromDate : string;
-  public toDate : string;
+  public cancelRental: boolean = false;
+  public listOfData: RentedBooks[];
+
+  public fromDate: string;
+  public toDate: string;
   constructor(private rentedBooksService: RentedBookApiService) { }
 
   ngOnInit() {
-    this.rentedBooksService.getRentedBooks().subscribe(data =>{ 
+    this.rentedBooksService.getRentedBooks().subscribe(data => {
       this.listOfData = data;
       console.log(this.listOfData);
-      for (let list of this.listOfData) {
+      for (const list of this.listOfData) {
         this.fromDate = moment(list.fromDate).format('MMMM Do YYYY, HH:mm:ss');
         this.toDate = moment(list.toDate).format('MMMM Do YYYY, HH:mm:ss');
+        list.cancelRental = false;
       }
-      
+
     });
     
 
-    
+
   }
   // delete(book: Book): void {
   //   this.listOfData = this.listOfData.filter(b => b !== book);
@@ -47,8 +51,8 @@ export class RentedBookPageComponent implements OnInit {
         this.deleteBook = !this.deleteBook;
         
       } else {
-        window.alert("Can't cancel rental"); 
-    }})
+        window.alert('Can\'t cancel rental');
+    }});
   }
 
 }
