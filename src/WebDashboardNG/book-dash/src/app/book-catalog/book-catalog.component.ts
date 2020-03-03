@@ -14,6 +14,7 @@ export class BookCatalogComponent implements OnInit {
 
   public books: Book[];
   
+  public loading: boolean = true;
   
 
   // please read https://angular.io/guide/component-interaction
@@ -23,7 +24,7 @@ export class BookCatalogComponent implements OnInit {
   ngOnInit() {
     this.booksService.getBookApi().subscribe(data =>{ 
       this.books = data.books;
-      
+      this.loading = false;
       console.log(this.books);
     });
     
