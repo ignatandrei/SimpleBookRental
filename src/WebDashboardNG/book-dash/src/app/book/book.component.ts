@@ -4,6 +4,8 @@ import { Books } from "../Books";
 import { Book } from '../Book';
 import { Author } from '../Author';
 import { environment } from 'src/environments/environment';
+import { RentedBookApiService } from '../rented-book-api.service';
+
 
 
 @Component({
@@ -25,7 +27,12 @@ export class BookComponent implements OnInit {
   ngOnInit() {
     //TODO: add call to /UserOperations/RentedBooks
       //and display rented books with different color / etc...
-
+      
+      // if (this.book.id = this.rentBookService.getRentedBooks().filter(b => b == this.listOfData) ) {
+      //   this.rentStatus = "Book is rented";
+      // } else {
+      //   this.rentStatus = "Rent Book";
+      // }
 
       //TODO: search books
       //https://angular.io/guide/practical-observable-usage
