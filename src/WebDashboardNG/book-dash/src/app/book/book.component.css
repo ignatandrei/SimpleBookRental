@@ -1,7 +1,11 @@
 .cardHeight {
     height: 19rem;
+    width: 30rem;
 }
 
 .imageMaxH {
+    min-width: auto;
     max-height: 15rem;
+    display: block;
+    
 }
