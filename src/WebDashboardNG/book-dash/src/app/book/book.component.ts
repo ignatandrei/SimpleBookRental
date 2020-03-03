@@ -20,6 +20,7 @@ export class BookComponent implements OnInit {
   public bookRented: boolean = false;
   public imageUrl: string;
   public rentStatus : string = "Rent Book";
+  public loading: boolean;
   
   constructor( private rentBookService: BookApiService ) {
   this.imageUrl = environment.apiUrl + 'Book/GetImage';
@@ -27,7 +28,7 @@ export class BookComponent implements OnInit {
   ngOnInit() {
     //TODO: add call to /UserOperations/RentedBooks
       //and display rented books with different color / etc...
-      
+
       // if (this.book.id = this.rentBookService.getRentedBooks().filter(b => b == this.listOfData) ) {
       //   this.rentStatus = "Book is rented";
       // } else {

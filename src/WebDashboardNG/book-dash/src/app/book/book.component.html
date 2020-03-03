@@ -1,14 +1,14 @@
-<div class="dib br2 dark-gray b--black-10 w-20 mv4 mh2 mw-30 bg-near-white pa1 cardHeight">
+<nz-card class="dib br2 dark-gray b--black-10 h-auto mv4 mh2 mw-30 bg-near-white pa1 cardHeight" [nzLoading]="loading">
     <!-- <img class="br2 br--top h-25 w-100" alt="book" src="https://localhost:5001/Book/GetImage/{{book.id}}"/> -->
-    <div class="fl w-50">
+    <div class="fl w-40 h3 pb5">
       <img
-        class="h-100"
+        class="w-100 h-auto mb3 imageMaxH"
         alt="book"
         src="{{imageUrl}}/{{book.id}}"
       />
     </div>
   
-    <div class="fl w-50 pt5 pb5 pr2 pl2">
+    <div class="fl w-60 pt5 pb5 pr2 pl2 h3">
       <h3 class="mv0 b">{{ book.title }}</h3>
       <!-- <p class="f6">{{ book.description }}</p> -->
       <!-- <h3>ID: {{ book.id }}</h3> -->
@@ -17,6 +17,6 @@
         </h3>
       <Button nz-button nzType="primary" (click)="rentABook()">{{rentStatus}}</Button>
     </div>
-  </div>
+  </nz-card>
   <!-- <div *ngIf="bookRented"> Este inchiriata</div> -->
 
