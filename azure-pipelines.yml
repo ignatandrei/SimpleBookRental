@@ -45,8 +45,9 @@ steps:
   
   - script: |
       cmd /K set
+      call npm i -g @angular/cli
       buildAll.bat
-    displayName: build react
+    displayName: build web site
   
   
   - script: |
