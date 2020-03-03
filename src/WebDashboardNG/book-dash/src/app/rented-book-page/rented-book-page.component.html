@@ -10,7 +10,7 @@
         <th>Rental Status</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="deleteBook">
       <tr *ngFor="let data of basicTable.data">
         <td>{{ data.book.id }}</td>
         <td *ngFor="let author of data.book.authors">{{ author.name }}</td> 
