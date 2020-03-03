@@ -17,7 +17,7 @@ namespace BookRentalObjects
     {
         public byte[] GetImage(int bookId)
         {
-            string fileName = $"wwwroot/images/{bookId}.jpg";
+            string fileName = $"wwwroot/assets/images/{bookId}.jpg";
             if (File.Exists(fileName))
             {
                 return File.ReadAllBytes(fileName);
