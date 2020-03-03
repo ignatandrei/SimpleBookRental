@@ -45,7 +45,7 @@ steps:
   
   - script: |
       cmd /K set
-      call npm i -g @angular/cli
+      call npm i -g @angular/cli@9.0.2
       buildAll.bat
     displayName: build web site
   
