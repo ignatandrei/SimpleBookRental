@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { fromEvent, Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 import { Book } from '../Book';
+import { SearchPerformedService } from '../search-performed.service';
 
 
 @Component({
@@ -10,24 +11,28 @@ import { Book } from '../Book';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements  AfterViewInit {
   @Input() 
   public book : Book;
   
-  constructor() { }
+  private typeAhead:Observable<string>;
+  
+  constructor(private searchFilter: SearchPerformedService) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
 const searchBox = document.getElementById('search-box');
 
-const typeahead = fromEvent(searchBox, 'input').pipe(
+this.typeAhead = fromEvent(searchBox, 'input').pipe(
   map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
-  filter(text => text.length > 2),
+  //filter(text => text.length > 2),
   debounceTime(10),
-  distinctUntilChanged(),
-  switchMap(() => ajax('/api/endpoint'))
+  distinctUntilChanged()
+  //switchMap(() => this.searchFilter.NewSearchAnnounce)
 );
 
-typeahead.subscribe(data => this.book);
+ this.typeAhead.subscribe(data => {
+   this.searchFilter.NewSearchAnnounce(data);
+ });
   }
 
 }
