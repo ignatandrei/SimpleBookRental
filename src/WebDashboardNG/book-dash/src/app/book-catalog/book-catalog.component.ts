@@ -33,12 +33,30 @@ export class BookCatalogComponent implements OnInit {
     });
 
     this.searchFilter.newSearchObservable.subscribe(filter => {
+
       if (filter == null || filter.length === 0) {
         this.books = this.booksFromBackEnd;
       } else {
+        filter = filter.toUpperCase();
         this.books = this.booksFromBackEnd.filter(
-          b => b.title.indexOf(filter) > 0
+          b => {
+            //titlu
+            if(b.title.toUpperCase().indexOf(filter) > -1) {
+              return true;
+            }
+            //authors
+            for(let a of b.authors){
+              if(a.name.toUpperCase().indexOf(filter) > -1) {
+                return true;
+              }
+            }
+
+
+            return false;
+          }
         );
+        console.log(`in search ${filter} ${this.books.length}`);
+      
       }
     });
   }

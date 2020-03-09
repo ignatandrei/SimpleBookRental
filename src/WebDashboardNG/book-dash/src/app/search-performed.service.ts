@@ -9,6 +9,7 @@ export class SearchPerformedService {
   private aNewSearch = new Subject<string>();
   public newSearchObservable = this.aNewSearch.asObservable();
   public NewSearchAnnounce(filter: string ){
+      console.log(`searching for ${filter}`);
       this.aNewSearch.next(filter);
   }
 
