@@ -1,4 +1,4 @@
-<nz-table #basicTable [nzData]="listOfData" [nzShowPagination]="false">
+<nz-table #basicTable [nzData]="listOfData"  [nzShowPagination]="false">
     <thead>
       <tr>
         <th>Book ID</th>
@@ -24,3 +24,8 @@
       </tr>
     </tbody>
   </nz-table>
+
+
+  <Li *ngFor="let b of listOfData">
+    {{b.book.title}}
+  </Li>

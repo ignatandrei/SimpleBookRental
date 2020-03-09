@@ -44,9 +44,10 @@ export class RentedBookPageComponent implements OnInit {
   unRentBook(id:number){
     this.rentedBooksService.unRentBook(id).subscribe(data=> {
       if (data == true) {
-        this.cancelRental = true;
-        this.deleteBook = !this.deleteBook;
-        
+        //this.cancelRental = true;
+        //this.deleteBook = !this.deleteBook;
+        const items = this.listOfData.splice(1,1);//TODO: read splice
+        this.listOfData = [...items];
       } else {
         window.alert('Can\'t cancel rental');
     }});
