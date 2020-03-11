@@ -1,7 +1,54 @@
-<div *ngFor="let allbooks of allRentedBooks">
-  <h3>{{ allbooks.userName }}</h3>
-  <h3 *ngFor="let booksRented of allbooks.booksRented">
-    {{ booksRented.book.title }}
-  </h3>
-  <h3>test</h3>
+<div *ngFor="let allBooks of allRentedBooks">
+  <!-- <nz-list
+    class="demo-loadmore-list"
+    [nzDataSource]="allRentedBooks"
+    [nzItemLayout]="'horizontal'"
+    [nzRenderItem]="item"
+  >
+    <ng-template #item let-item>
+      <nz-list-item>
+        <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false">
+          <ng-template #editAction><a>edit</a></ng-template>
+          <ng-template #moreAction><a>more</a></ng-template>
+          <nz-list-item-meta
+            [nzTitle]="nzTitle"
+            nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team"
+          >
+            <ng-template #nzTitle>
+              <a href="https://ng.ant.design">{{ allBooks.userName }}</a>
+            </ng-template>
+          </nz-list-item-meta>
+        </nz-skeleton>
+      </nz-list-item>
+    </ng-template>
+    <ng-template #loadMore>
+      <div class="loadmore">
+        <button nz-button>
+          loading more
+        </button>
+      </div>
+    </ng-template>
+  </nz-list> -->
+
+  <nz-list
+    [nzDataSource]="allRentedBooks"
+    [nzRenderItem]="item"
+    [nzItemLayout]="'horizontal'"
+    [nzLoading]="loading"
+  >
+    <ng-template #item let-item>
+      <nz-list-item>
+        <nz-list-item-meta
+          [nzTitle]="nzTitle"
+          nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+          nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team"
+        >
+          <ng-template #nzTitle>
+            <a href="https://ng.ant.design">{{ item.userName }}</a>
+          </ng-template>
+        </nz-list-item-meta>
+      </nz-list-item>
+    </ng-template>
+  </nz-list>
 </div>
