@@ -121,6 +121,7 @@ namespace BookRentalObjects
                 Title="1984",
                 Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors =authors.Where(it=>it.Name.Contains("Orwell")).ToArray(),
+                TotalNumber = 5
 
             });
             books.Add(new Book()
@@ -129,7 +130,7 @@ namespace BookRentalObjects
                 Title = "Animal Farm",
                 Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Orwell")).ToArray(),
-
+                TotalNumber = 3
             });
             books.Add(new Book()
             {
@@ -137,7 +138,7 @@ namespace BookRentalObjects
                 Title = "A History of Religious Ideas (Vol. 1, Vol. 2, Vol. 3)",
                 Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Eliade")).ToArray(),
-
+                TotalNumber = 20
             });
             books.Add(new Book()
             {
@@ -145,7 +146,7 @@ namespace BookRentalObjects
                 Title = "12 Rules for Life: An Antidote to Chaos",
                 Description = "12 Rules for Life: An Antidote to Chaos is a 2018 self-help book by Canadian clinical psychologist and psychology professor Jordan Peterson. It provides life advice through essays on abstract ethical principles, psychology, mythology, religion, and personal anecdotes.",
                 Authors = authors.Where(it => it.Name.Contains("Peterson")).ToArray(),
-
+                TotalNumber = 7
             });
             books.Add(new Book()
             {

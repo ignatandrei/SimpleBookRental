@@ -1,20 +1,27 @@
-<div class="tc di">
-    <ul nz-menu nzMode="horizontal">
-        <li nz-menu-item nzSelected>
-          <a routerLink="/books-rental-page">Book Rental</a></li>
-        
-        <li nz-menu-item>
-          <a routerLink="/rented-books-page">Rented Books</a>
-        </li>
-        
-        <nz-input-group  nzSearch [nzAddOnAfter]="suffixIconButton">
-          <input id="search-box" type="text" nz-input placeholder="input search text" />
-        </nz-input-group>
-        <ng-template #suffixIconButton>
-          <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
-        </ng-template>
-       
-        
-      </ul>
-      
+<div class="tc di h3">
+  <div class="h-auto fl b pt2 pl2 bookRentalMenu grow">
+    <fa-icon
+      [icon]="faBook"
+      class="fl h-auto pl2 pr3 bookIcon"
+      size="lg"
+    ></fa-icon>
+    <a routerLink="/books-rental-page">Book Rental App</a>
   </div>
+
+  <ul nz-menu nzMode="horizontal" class="h-auto">
+    <li nz-menu-item nzMatchRouter class="h-auto">
+      <a routerLink="/books-rental-page">Book Rental</a>
+    </li>
+
+    <li nz-menu-item nzMatchRouter class="h-auto">
+      <a routerLink="/rented-books-page">Rented Books</a>
+    </li>
+
+    <nz-input-group [nzSuffix]="suffixIconSearch" class="h-auto pt2 pb2">
+      <input id="search-box" type="text" nz-input placeholder="Search book" />
+    </nz-input-group>
+    <ng-template #suffixIconSearch class="h-auto">
+      <i nz-icon nzType="search"></i>
+    </ng-template>
+  </ul>
+</div>

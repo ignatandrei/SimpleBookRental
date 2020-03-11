@@ -42,10 +42,17 @@ namespace BookRentalAPI.Controllers
             return rb.UnRentBook(uid, id);
 
         }
+        [HttpGet()]
         public RentedBook[] RentedBooks()
         {
             var rb = new RentBooks();
             return rb.UserBooks(GetActualUser());
+        }
+        [HttpGet("{id}")]
+        public bool IsBookRented(int id)
+        {
+            var rb = new RentBooks();
+            return rb.IsBookRented(GetActualUser(), id);
         }
 
     }

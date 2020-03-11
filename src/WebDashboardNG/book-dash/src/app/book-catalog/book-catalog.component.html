@@ -1,2 +1,5 @@
-<div *ngIf="loading">Loading data</div>
-<app-book   *ngFor="let book of books" [book]="book"></app-book>
+<div *ngIf="loading" class="pt6 pb6 w-100">
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+    <h1>Loading books...</h1>
+</div>
+<app-book *ngFor="let book of books" [book]="book"></app-book>

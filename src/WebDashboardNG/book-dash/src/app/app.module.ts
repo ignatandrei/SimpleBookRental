@@ -17,6 +17,8 @@ import 'tachyons';
 import { BookRentalPageComponent } from './book-rental-page/book-rental-page.component';
 import { RentedBookPageComponent } from './rented-book-page/rented-book-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DefaultDataRentedComponent } from './default-data-rented/default-data-rented.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 registerLocaleData(en);
 
@@ -31,6 +33,7 @@ registerLocaleData(en);
     BookCatalogComponent,
     BookRentalPageComponent,
     RentedBookPageComponent,
+    DefaultDataRentedComponent,
     
   ],
   imports: [
@@ -40,7 +43,8 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NzInputModule
+    NzInputModule,
+    FontAwesomeModule
     
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

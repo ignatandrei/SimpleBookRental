@@ -1,31 +1,47 @@
-<nz-table #basicTable [nzData]="listOfData"  [nzShowPagination]="false">
-    <thead>
-      <tr>
-        <th>Book ID</th>
-        <th>Author</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>From Date</th>
-        <th>To Date</th>
-        <th>Rental Status</th>
-      </tr>
-    </thead>
-    <tbody *ngIf="deleteBook">
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.book.id }}</td>
-        <td *ngFor="let author of data.book.authors">{{ author.name }}</td> 
-        <td>{{ data.book.title }}</td>
-        <td>{{ data.book.description }}</td>
-        <td>{{ fromDate }}</td>
-        <td>{{ toDate }}</td>
-        <td>
-            <button *ngIf="!data.cancelRental" nz-button nzType="danger" (click)="unRentBook(data.book.id)">Cancel 一 {{ data.book.title }}</button>
-          </td>
-      </tr>
-    </tbody>
-  </nz-table>
+<nz-table
+  #basicTable
+  [nzData]="listOfData"
+  [nzShowPagination]="false"
+  [nzLoading]="loading"
+  [nzNoResult]="customTpl"
+>
+  <thead>
+    <tr>
+      <th>Book ID</th>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>From Date</th>
+      <th>To Date</th>
+      <th>Rental Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.book.id }}</td>
+      <td *ngFor="let author of data.book.authors">{{ author.name }}</td>
+      <td>{{ data.book.title }}</td>
+      <td>{{ data.book.description }}</td>
+      <td>{{ fromDate }}</td>
+      <td>{{ toDate }}</td>
+      <td>
+        <button nz-button nzType="danger" (click)="unRentBook(data.book.id)">
+          Cancel 一 {{ data.book.title }}
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
 
-
-  <Li *ngFor="let b of listOfData">
-    {{b.book.title}}
-  </Li>
+<ng-template #customTpl>
+  <div class="tc">
+    <i nz-icon nzType="frown" style="font-size: 45px; color: #ff0000;"></i>
+    <h3 class="pt4 pb2">
+      Uh oh! <br />
+      You currently have no rented books.
+    </h3>
+    <button nz-button nzType="primary" routerLink="/books-rental-page">
+      Rent Now
+    </button>
+  </div>
+</ng-template>
