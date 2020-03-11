@@ -25,8 +25,19 @@
       <td>{{ fromDate }}</td>
       <td>{{ toDate }}</td>
       <td>
-        <button nz-button nzType="danger" (click)="unRentBook(data.book.id)">
-          Cancel 一 {{ data.book.title }}
+        <button
+          nz-popconfirm
+          nzPopconfirmTitle="Are you sure you want to cancel rental for {{
+            data.book.title
+          }} ?"
+          nzOkType="danger"
+          nzOkText="Yes"
+          nzCancelText="No"
+          (nzOnConfirm)="unRentBook(data.book.id)"
+          nz-button
+          nzType="danger"
+        >
+          Cancel Rental
         </button>
       </td>
     </tr>
