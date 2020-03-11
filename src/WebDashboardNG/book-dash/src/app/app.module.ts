@@ -20,6 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { DefaultDataRentedComponent } from './default-data-rented/default-data-rented.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BookRentalAdminPageComponent } from './book-rental-admin-page/book-rental-admin-page.component';
+import { AdminMenuComponent } from './book-rental-admin-page/admin-menu/admin-menu.component';
+import { AdminRentedBooksPageComponent } from './book-rental-admin-page/admin-rented-books-page/admin-rented-books-page.component';
 
 registerLocaleData(en);
 
@@ -36,6 +38,8 @@ registerLocaleData(en);
     RentedBookPageComponent,
     DefaultDataRentedComponent,
     BookRentalAdminPageComponent,
+    AdminMenuComponent,
+    AdminRentedBooksPageComponent,
     
   ],
   imports: [

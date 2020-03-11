@@ -1,0 +1,7 @@
+<div *ngFor="let allbooks of allRentedBooks">
+  <h3>{{ allbooks.userName }}</h3>
+  <h3 *ngFor="let booksRented of allbooks.booksRented">
+    {{ booksRented.book.title }}
+  </h3>
+  <h3>test</h3>
+</div>
