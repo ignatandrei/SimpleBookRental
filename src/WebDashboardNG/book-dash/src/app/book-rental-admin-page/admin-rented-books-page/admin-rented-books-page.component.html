@@ -35,14 +35,14 @@
     [nzDataSource]="allRentedBooks"
     [nzRenderItem]="item"
     [nzItemLayout]="'horizontal'"
-    
   >
     <ng-template #item let-item>
       <nz-list-item>
         <nz-list-item-meta
+          *ngFor="let booksRented of item.booksRented"
           [nzTitle]="nzTitle"
           nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team"
+          nzDescription="{{ booksRented.book.title }}"
         >
           <ng-template #nzTitle>
             <a href="https://ng.ant.design">{{ item.userName }}</a>
